@@ -12,9 +12,6 @@
 		<tags>Extensions</tags>
 	</metadata>
 	<files>
-		<file src="SXN.Core.dll" target="lib\net451" />
-		<file src="SXN.Core.xml" target="lib\net451" />
-		<file src="SXN.Core.pdb" target="lib\net451" />
-		<file src="..\src\Sources\Core\**\*.cs" target="src" />
+		<file src="src\**\*.cs" target="src" />
 	</files>
 </package>
