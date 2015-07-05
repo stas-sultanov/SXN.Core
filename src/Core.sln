@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0AEEAEBF-82F9-421F-B0D3-853E78830B38}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\nuget.config = .nuget\nuget.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{B3B75BE1-9DB3-41D9-9151-6100A67BA330}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "Core.Tests\Core.Tests.csproj", "{A5CCD6A7-6BDE-4667-9390-341BD4E0394E}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://golion.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Core\\Core.csproj
+		SccProjectName1 = Core
+		SccLocalPath1 = Core
+		SccProjectUniqueName2 = Core.Tests\\Core.Tests.csproj
+		SccProjectName2 = Core.Tests
+		SccLocalPath2 = Core.Tests
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3B75BE1-9DB3-41D9-9151-6100A67BA330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3B75BE1-9DB3-41D9-9151-6100A67BA330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3B75BE1-9DB3-41D9-9151-6100A67BA330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3B75BE1-9DB3-41D9-9151-6100A67BA330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5CCD6A7-6BDE-4667-9390-341BD4E0394E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5CCD6A7-6BDE-4667-9390-341BD4E0394E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5CCD6A7-6BDE-4667-9390-341BD4E0394E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

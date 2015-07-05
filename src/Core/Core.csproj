@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		<ProjectGuid>{B3B75BE1-9DB3-41D9-9151-6100A67BA330}</ProjectGuid>
+		<OutputType>Library</OutputType>
+		<AppDesignerFolder>Properties</AppDesignerFolder>
+		<RootNamespace>System</RootNamespace>
+		<AssemblyName>SXN.Core</AssemblyName>
+		<TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+		<FileAlignment>512</FileAlignment>
+		<SccProjectName>SAK</SccProjectName>
+		<SccLocalPath>SAK</SccLocalPath>
+		<SccProvider>SAK</SccProvider>
+		<TargetFrameworkProfile />
+		<SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+	</PropertyGroup>
+	<PropertyGroup>
+		<SignAssembly>false</SignAssembly>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<OutputPath>bin\Release\</OutputPath>
+		<DefineConstants>TRACE;CODE_ANALYSIS;</DefineConstants>
+		<DocumentationFile>bin\Release\SXN.Core.xml</DocumentationFile>
+		<Optimize>true</Optimize>
+		<DebugType>pdbonly</DebugType>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<RunCodeAnalysis>true</RunCodeAnalysis>
+		<ErrorReport>prompt</ErrorReport>
+		<CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+		<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+		<DebugSymbols>true</DebugSymbols>
+		<OutputPath>bin\Debug\</OutputPath>
+		<DefineConstants>TRACE;DEBUG</DefineConstants>
+		<DebugType>full</DebugType>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<RunCodeAnalysis>true</RunCodeAnalysis>
+		<ErrorReport>prompt</ErrorReport>
+		<CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+		<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="System" />
+		<Reference Include="System.Net" />
+		<Reference Include="System.Runtime.Serialization" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="Collections\Generic\ArneTree.cs" />
+		<Compile Include="Collections\Generic\ArneTreeNode.cs" />
+		<Compile Include="Collections\Generic\NodeBase.cs" />
+		<None Include="StateMachine\StateMachineTransition.cs" />
+		<None Include="StateMachine\StateMachineState.cs" />
+		<Compile Include="BaseEncoding\Base32Encoding.cs" />
+		<Compile Include="BaseEncoding\Base16Encoding.cs" />
+		<Compile Include="BaseEncoding\BaseEncoding.cs" />
+		<Compile Include="Diagnostics\PerformanceCounterSettingsEx.cs" />
+		<Compile Include="DisposableBase.cs" />
+		<Compile Include="ITryResult.cs" />
+		<Compile Include="RangeEx.cs" />
+		<Compile Include="Threading\AlignedTimer.cs" />
+		<Compile Include="Threading\AlignedTimerCallback.cs" />
+		<Compile Include="Diagnostics\Tracing\DiagnosticsEventArgs.cs" />
+		<Compile Include="Collections\Generic\LinkedListEx.cs" />
+		<Compile Include="TimeUnitEx.cs" />
+		<Compile Include="Collections\Generic\GenericEqualityComparer.cs" />
+		<Compile Include="TimeInterval.cs" />
+		<Compile Include="TimeUnit.cs" />
+		<Compile Include="UInt32Ex.cs" />
+		<Compile Include="ServiceModel\IServerRequestHandler.cs" />
+		<Compile Include="ServiceModel\EntityStateTransition.cs" />
+		<Compile Include="Collections\Generic\KeyValuePairEqualityComparer.cs" />
+		<Compile Include="StringTemplate.cs" />
+		<Compile Include="TryResult.cs" />
+		<Compile Include="Value128Converter.cs" />
+		<Compile Include="ValueChangedEventArgs.cs" />
+		<Compile Include="ServiceModel\EntityState.cs" />
+		<Compile Include="DateTimeEx.cs" />
+		<Compile Include="ServiceModel\EntityStateEx.cs" />
+		<Compile Include="Linq\EnumerableEx.cs" />
+		<Compile Include="Range.cs" />
+		<Compile Include="LoadTest.cs" />
+		<Compile Include="ServiceModel\ServerSettings.cs" />
+		<Compile Include="MemoryStreamManager.cs" />
+		<Compile Include="Diagnostics\PerformanceCounterSettings.cs" />
+		<Compile Include="Threading\Tasks\SequentialExecutor.cs" />
+		<Compile Include="Value128.cs" />
+		<Compile Include="ServiceModel\WorkerBase.cs" />
+		<Compile Include="ServiceModel\ServerBase.cs" />
+		<Compile Include="Properties\AssemblyInfo.cs" />
+		<Compile Include="BaseEncoding\Base64Encoding.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="SXN.Core.nuspec">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	<ItemGroup />
+	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
