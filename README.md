@@ -1,5 +1,6 @@
 # SXN.Core
-Contains types that extends .NET Framework.
+A collection of types that extends .NET Framework.
 
-# Latest Build
-Can be found at https://www.nuget.org/packages/SXN.Core/
+### [Read blog about](http://stas-sultanov.github.io/)
+
+### [Get NuGet package](https://www.nuget.org/packages/SXN.Core/)
