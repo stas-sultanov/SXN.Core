@@ -1,11 +1,7 @@
 # Enable -Verbose option
 [CmdletBinding()]
 
-#param([String] $nuget, [String] $apiKey, [String] $workingDir)
-
-param([String] $apiKey, [String] $workingDir)
-
-$nuget = 'NuGet.exe'
+param([String] $nuget, [String] $apiKey, [String] $workingDir)
 
 # Check if path to nuget.exe is specified
 if (-not $nuget)
