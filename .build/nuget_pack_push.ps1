@@ -31,9 +31,6 @@ foreach ($nuspecFile in $nuspecFiles)
 	Invoke-Expression "$nuget pack $nuspecFile -Verbosity detailed -Symbols -OutputDirectory $workingDir"
 }
 
-# Remove not nupkg files and folders
-Get-ChildItem -Path $workingDir -Recurse -Exclude '*.nupkg' | Remove-Item -Force -Recurse
-
 # Enumerate packages files
 $packageFiles = Get-ChildItem -Path $workingDir -Recurse -File -Include '*.nupkg' -Exclude '*.symbols.nupkg'
 
