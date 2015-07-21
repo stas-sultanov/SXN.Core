@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Core.csproj", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "tests\Core.Tests.csproj", "{A5CCD6A7-6BDE-4667-9390-341BD4E0394E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{CB052578-A60D-4B6F-AD26-76B9F525E727}"
+	ProjectSection(SolutionItems) = preProject
+		.build\NuGet.exe = .build\NuGet.exe
+		.build\nuget_pack_push.ps1 = .build\nuget_pack_push.ps1
+		.build\replace_version.ps1 = .build\replace_version.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

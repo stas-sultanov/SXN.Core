@@ -19,6 +19,12 @@ if (-not $workingDir)
 	exit 1
 }
 
+# Compose output directory path
+$outDir = "$workingDir\.pkg"
+
+# Create output directory
+New-Item $outDir -type directory
+
 # Set api key
 Invoke-Expression "$nuget setApiKey $apiKey"
 
@@ -28,17 +34,14 @@ $nuspecFiles = Get-ChildItem -Path $workingDir -Recurse -File -Include '*.nuspec
 foreach ($nuspecFile in $nuspecFiles)
 {
 	# Pack NuGet package
-	Invoke-Expression "$nuget pack $nuspecFile -Verbosity detailed -Symbols -OutputDirectory $workingDir"
+	Invoke-Expression "$nuget pack $nuspecFile -Verbosity detailed -Symbols -OutputDirectory $outDir"
 }
 
 # Enumerate packages files
-$packageFiles = Get-ChildItem -Path $workingDir -Recurse -File -Include '*.nupkg' -Exclude '*.symbols.nupkg'
+$packageFiles = Get-ChildItem -Path $outDir -Recurse -File -Include '*.nupkg' -Exclude '*.symbols.nupkg'
 
 foreach ($file in $packageFiles)
 {
-	# Push symbols files
+	# Push packages
 	Invoke-Expression "$nuget push $file"
-
-	# Delete file
-	# Remove-Item $file -Force
 }
