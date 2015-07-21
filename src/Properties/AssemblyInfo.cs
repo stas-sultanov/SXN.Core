@@ -10,11 +10,11 @@ using System.Runtime.InteropServices;
 
 #if DEBUG
 
-[assembly: AssemblyConfiguration(@"Debug")]
+[assembly: AssemblyConfiguration("Debug")]
 
 #else
 
-[assembly: AssemblyConfiguration(@"Retail")]
+[assembly: AssemblyConfiguration("Retail")]
 
 #endif
 
@@ -29,11 +29,6 @@ using System.Runtime.InteropServices;
 // The description of the assembly.
 
 [assembly: AssemblyDescription("A collection of types that extends .NET Framework.")]
-
-// The version number of the file.
-// Is managed by the build process.
-
-[assembly: AssemblyFileVersion("255.255.255.255")]
 
 // The product name information.
 
@@ -50,7 +45,7 @@ using System.Runtime.InteropServices;
 // The version number of the assembly.
 // Is managed by the build process.
 
-[assembly: AssemblyVersion("255.255.255.255")]
+[assembly: AssemblyVersion("4.4.*")]
 
 // Indicate that the assembly is not visible to COM
 

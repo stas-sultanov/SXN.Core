@@ -5,13 +5,16 @@
 		<title>SXN.Core</title>
 		<version>255.255.255.255</version>
 		<authors>Stas Sultanov</authors>
-		<description>Contains types that extends .NET Framework.</description>
+		<description>A collection of types that extends .NET Framework.</description>
 		<copyright>Copyright © 2015 Stas Sultanov.</copyright>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
 		<tags>Extensions</tags>
 	</metadata>
 	<files>
+		<file src="bin\SXN.Core.dll" target="lib\net46" />
+		<file src="bin\SXN.Core.xml" target="lib\net46" />
+		<file src="bin\SXN.Core.pdb" target="lib\net46" />
 		<file src="src\**\*.cs" target="src" />
 	</files>
 </package>
