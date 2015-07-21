@@ -6,7 +6,7 @@ namespace System
 	using IntRange = Range<Int32>;
 
 	/// <summary>
-	/// Provides a set of unit tests for <see cref="Range{T}" /> class.
+	/// Provides a set of unit tests for <see cref="Range{T}"/> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]

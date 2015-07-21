@@ -1,7 +1,7 @@
 ﻿namespace System.Collections.Generic
 {
 	/// <summary>
-	/// Provides equality comparison of two <typeparamref name="T" /> objects.
+	/// Provides equality comparison of two <typeparamref name="T"/> objects.
 	/// </summary>
 	/// <typeparam name="T">The type of objects to compare.</typeparam>
 	public sealed class GenericEqualityComparer<T> : IEqualityComparer<T>
@@ -17,12 +17,12 @@
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="GenericEqualityComparer{T}" /> class.
+		/// Initializes a new instance of <see cref="GenericEqualityComparer{T}"/> class.
 		/// </summary>
 		/// <param name="equals">A delegate to the method that determines whether the specified objects are equal.</param>
 		/// <param name="getHashCode">A delegate to the method that determines whether the specified objects are equal.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="equals" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="getHashCode" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="equals"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="getHashCode"/> is <c>null</c>.</exception>
 		public GenericEqualityComparer(Func<T, T, Boolean> equals, Func<T, Int32> getHashCode)
 		{
 			if (equals == null)
@@ -58,7 +58,7 @@
 		/// <summary>
 		/// Returns a hash code for the specified object.
 		/// </summary>
-		/// <param name="obj">The <see cref="object" /> for which a hash code is to be returned.</param>
+		/// <param name="obj">The <see cref="object"/> for which a hash code is to be returned.</param>
 		/// <returns>A hash code for the specified object.</returns>
 		public Int32 GetHashCode(T obj)
 		{

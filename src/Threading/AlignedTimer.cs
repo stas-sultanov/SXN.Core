@@ -3,7 +3,7 @@
 namespace System.Threading
 {
 	/// <summary>
-	/// Represents a timer which generates recurring events aligned to the <see cref="TimeUnit" />.
+	/// Represents a timer which generates recurring events aligned to the <see cref="TimeUnit"/>.
 	/// </summary>
 	public sealed class AlignedTimer : IDisposable
 	{
@@ -22,12 +22,12 @@ namespace System.Threading
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="AlignedTimer" /> class.
+		/// Initializes a new instance of <see cref="AlignedTimer"/> class.
 		/// </summary>
-		/// <param name="callback">A <see cref="AlignedTimerCallback" /> delegate representing a method to be executed.</param>
-		/// <param name="interval">The time interval between invocations of <paramref name="callback" />.</param>
+		/// <param name="callback">A <see cref="AlignedTimerCallback"/> delegate representing a method to be executed.</param>
+		/// <param name="interval">The time interval between invocations of <paramref name="callback"/>.</param>
 		/// <param name="shift">The time shift of the invocation time.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="callback" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="callback"/> is <c>null</c>.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public AlignedTimer(AlignedTimerCallback callback, TimeUnit interval, TimeSpan shift)
 		{
@@ -54,7 +54,7 @@ namespace System.Threading
 		#region Properties
 
 		/// <summary>
-		/// Gets or sets the <see cref="Boolean" /> value which indicates whether current timer is active.
+		/// Gets or sets the <see cref="Boolean"/> value which indicates whether current timer is active.
 		/// </summary>
 		public Boolean Enabled
 		{
@@ -101,7 +101,7 @@ namespace System.Threading
 		#region Methods of IDisposable
 
 		/// <summary>
-		/// Releases all resources used by <see cref="AlignedTimer" />.
+		/// Releases all resources used by <see cref="AlignedTimer"/>.
 		/// </summary>
 		public void Dispose()
 		{
@@ -133,7 +133,7 @@ namespace System.Threading
 		}
 
 		/// <summary>
-		/// Handles calls from the <see cref="timer" />.
+		/// Handles calls from the <see cref="timer"/>.
 		/// </summary>
 		/// <param name="state">An object containing application-specific information relevant to the method invoked by this method, or null.</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]

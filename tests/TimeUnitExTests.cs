@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="TimeUnitEx" /> class.
+	/// Provides a set of tests for <see cref="TimeUnitEx"/> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]

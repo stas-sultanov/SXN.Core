@@ -4,17 +4,17 @@ using System.Linq;
 namespace System.Diagnostics
 {
 	/// <summary>
-	/// Provides a set of extension methods for the <see cref="PerformanceCounterSettings" /> class.
+	/// Provides a set of extension methods for the <see cref="PerformanceCounterSettings"/> class.
 	/// </summary>
 	public static class PerformanceCounterSettingsEx
 	{
 		#region Methods
 
 		/// <summary>
-		/// Installs the specified performance <paramref name="counters" />.
+		/// Installs the specified performance <paramref name="counters"/>.
 		/// </summary>
 		/// <param name="counters">A list of counters to install.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="counters" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="counters"/> is <c>null</c>.</exception>
 		public static void Install(this IEnumerable<PerformanceCounterSettings> counters)
 		{
 			if (counters == null)

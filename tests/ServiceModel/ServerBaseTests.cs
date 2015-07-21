@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace System.ServiceModel
 {
 	/// <summary>
-	/// Provides a set of test methods for <see cref="ServerBase" /> class.
+	/// Provides a set of test methods for <see cref="ServerBase"/> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]
@@ -54,7 +54,7 @@ namespace System.ServiceModel
 			#region Overrides of WorkerBase
 
 			/// <summary>
-			/// When implemented in a derived class, executes when a <see cref="WorkerBase.ActivateAsync" /> method is called.
+			/// When implemented in a derived class, executes when a <see cref="WorkerBase.ActivateAsync"/> method is called.
 			/// </summary>
 			protected override Task<Boolean> OnActivatingAsync(CancellationToken cancellationToken)
 			{
@@ -64,7 +64,7 @@ namespace System.ServiceModel
 			}
 
 			/// <summary>
-			/// When implemented in a derived class, executes when a <see cref="WorkerBase.DeactivateAsync" /> method is called.
+			/// When implemented in a derived class, executes when a <see cref="WorkerBase.DeactivateAsync"/> method is called.
 			/// </summary>
 			protected override Task OnDeactivatingAsync(CancellationToken cancellationToken)
 			{

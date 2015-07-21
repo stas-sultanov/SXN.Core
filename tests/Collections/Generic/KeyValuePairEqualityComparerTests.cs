@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System.Collections.Generic
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="KeyValuePairEqualityComparer{TKey,TValue}" /> class.
+	/// Provides a set of tests for <see cref="KeyValuePairEqualityComparer{TKey,TValue}"/> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]

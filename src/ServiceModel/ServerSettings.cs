@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace System.ServiceModel
 {
 	/// <summary>
-	/// Specifies the configuration settings for a <see cref="ServerBase" /> class.
+	/// Specifies the configuration settings for a <see cref="ServerBase"/> class.
 	/// </summary>
 	[DataContract]
 	public class ServerSettings
@@ -13,12 +13,12 @@ namespace System.ServiceModel
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="ServerSettings" /> class.
+		/// Initializes a new instance of <see cref="ServerSettings"/> class.
 		/// </summary>
 		/// <param name="name">The name of the server.</param>
 		/// <param name="performanceCounters">The dictionary of configuration settings for the performance counters.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="name" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="performanceCounters" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="name"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="performanceCounters"/> is <c>null</c>.</exception>
 		public ServerSettings(String name, IReadOnlyDictionary<String, PerformanceCounterSettings> performanceCounters)
 		{
 			if (name == null)

@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System
 {
 	/// <summary>
-	/// Provides a set of unit tests for the <see cref="MemoryStreamManager" /> structure.
+	/// Provides a set of unit tests for the <see cref="MemoryStreamManager"/> structure.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]

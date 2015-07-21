@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace System
 {
 	/// <summary>
-	/// Provides management of the instances of the <see cref="MemoryStream" /> class.
+	/// Provides management of the instances of the <see cref="MemoryStream"/> class.
 	/// </summary>
 	public sealed class MemoryStreamManager : IDisposable
 	{
@@ -21,10 +21,10 @@ namespace System
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="MemoryStreamManager" /> class.
+		/// Initializes a new instance of <see cref="MemoryStreamManager"/> class.
 		/// </summary>
-		/// <param name="capacity">The maximal capacity of the <see cref="MemoryStream" /> in bytes.</param>
-		/// <exception cref="ArgumentOutOfRangeException"><paramref name="capacity" /> is less than<c>1</c>.</exception>
+		/// <param name="capacity">The maximal capacity of the <see cref="MemoryStream"/> in bytes.</param>
+		/// <exception cref="ArgumentOutOfRangeException"><paramref name="capacity"/> is less than<c>1</c>.</exception>
 		public MemoryStreamManager(Int32 capacity)
 		{
 			if (capacity < 1)
@@ -42,7 +42,7 @@ namespace System
 		#region Properties
 
 		/// <summary>
-		/// Gets the capacity of <see cref="MemoryStream" />.
+		/// Gets the capacity of <see cref="MemoryStream"/>.
 		/// </summary>
 		public Int32 Capacity
 		{
@@ -71,7 +71,7 @@ namespace System
 		/// <summary>
 		/// Gets a stream.
 		/// </summary>
-		/// <returns>An instance of <see cref="MemoryStream" />.</returns>
+		/// <returns>An instance of <see cref="MemoryStream"/>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public MemoryStream Get()
 		{
@@ -88,9 +88,9 @@ namespace System
 		}
 
 		/// <summary>
-		/// Puts <paramref name="stream" /> into the set of free streams.
+		/// Puts <paramref name="stream"/> into the set of free streams.
 		/// </summary>
-		/// <param name="stream">An instance of <see cref="MemoryStream" />.</param>
+		/// <param name="stream">An instance of <see cref="MemoryStream"/>.</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Put(MemoryStream stream)
 		{

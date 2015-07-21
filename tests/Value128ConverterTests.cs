@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="Value128" /> structure.
+	/// Provides a set of tests for <see cref="Value128"/> structure.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]

@@ -12,7 +12,7 @@ namespace System
 		#region Constructors
 
 		/// <summary>
-		/// Initialize a new instance of <see cref="Range{T}" /> class.
+		/// Initialize a new instance of <see cref="Range{T}"/> class.
 		/// </summary>
 		/// <param name="begin">A range begin.</param>
 		/// <param name="end">A range end.</param>
@@ -31,7 +31,7 @@ namespace System
 		/// Returns a value that indicates whether this instance is equal to a specified object.
 		/// </summary>
 		/// <param name="obj">The object to compare with this instance.</param>
-		/// <returns><c>true</c> if <paramref name="obj" /> is a <see cref="Range{T}" /> that has the same value as this instance; otherwise, <c>false</c>.</returns>
+		/// <returns><c>true</c> if <paramref name="obj"/> is a <see cref="Range{T}"/> that has the same value as this instance; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override Boolean Equals(Object obj)
 		{
@@ -57,11 +57,11 @@ namespace System
 		#region Methods of IComparable<Range<T>>
 
 		/// <summary>
-		/// Compares this object with another <see cref="Range{T}" /> object.
+		/// Compares this object with another <see cref="Range{T}"/> object.
 		/// </summary>
-		/// <param name="other">An <see cref="Range{T}" /> object to compare with this object.</param>
+		/// <param name="other">An <see cref="Range{T}"/> object to compare with this object.</param>
 		/// <returns>A -1 if this range is less then other, +1 if this range is greater than other, 0 if ranges overlap.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="other" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="other"/> is <c>null</c>.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Int32 CompareTo(Range<T> other)
 		{
@@ -116,10 +116,10 @@ namespace System
 		#region Methods of IEquatable<Range<T>>
 
 		/// <summary>
-		/// Returns a value indicating whether this instance and a specified <see cref="Range{T}" /> represent the same value.
+		/// Returns a value indicating whether this instance and a specified <see cref="Range{T}"/> represent the same value.
 		/// </summary>
 		/// <param name="other">An object to compare to this instance.</param>
-		/// <returns><c>true</c> if <paramref name="other" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+		/// <returns><c>true</c> if <paramref name="other"/> is equal to this instance; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Boolean Equals(Range<T> other)
 		{
@@ -131,11 +131,11 @@ namespace System
 		#region Operators
 
 		/// <summary>
-		/// Indicates whether the values of two specified <see cref="Range{T}" /> objects are equal.
+		/// Indicates whether the values of two specified <see cref="Range{T}"/> objects are equal.
 		/// </summary>
 		/// <param name="first">The first object to compare.</param>
 		/// <param name="second">The second object to compare.</param>
-		/// <returns><c>true</c> if <paramref name="first" /> and <paramref name="second" /> are equal; otherwise, <c>false</c>.</returns>
+		/// <returns><c>true</c> if <paramref name="first"/> and <paramref name="second"/> are equal; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Boolean operator ==(Range<T> first, Range<T> second)
 		{
@@ -143,11 +143,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Defines whether <paramref name="first" /> is greater than <paramref name="second" />.
+		/// Defines whether <paramref name="first"/> is greater than <paramref name="second"/>.
 		/// </summary>
 		/// <param name="first">The first object to compare.</param>
 		/// <param name="second">The second object to compare.</param>
-		/// <returns><c>true</c> if <paramref name="first" /> is greater than <paramref name="second" />, <c>false</c> otherwise.</returns>
+		/// <returns><c>true</c> if <paramref name="first"/> is greater than <paramref name="second"/>, <c>false</c> otherwise.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Boolean operator >(Range<T> first, Range<T> second)
 		{
@@ -155,11 +155,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Indicates whether the values of two specified <see cref="Value128" /> objects are not equal.
+		/// Indicates whether the values of two specified <see cref="Value128"/> objects are not equal.
 		/// </summary>
 		/// <param name="first">The first object to compare.</param>
 		/// <param name="second">The second object to compare.</param>
-		/// <returns><c>true</c> if <paramref name="first" /> and <paramref name="second" /> are not equal; otherwise, <c>false</c>.</returns>
+		/// <returns><c>true</c> if <paramref name="first"/> and <paramref name="second"/> are not equal; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Boolean operator !=(Range<T> first, Range<T> second)
 		{
@@ -167,11 +167,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Defines whether <paramref name="first" /> is less than <paramref name="second" />.
+		/// Defines whether <paramref name="first"/> is less than <paramref name="second"/>.
 		/// </summary>
 		/// <param name="first">The first object to compare.</param>
 		/// <param name="second">The second object to compare.</param>
-		/// <returns><c>true</c> if <paramref name="first" /> is less than <paramref name="second" />, <c>false</c> otherwise.</returns>
+		/// <returns><c>true</c> if <paramref name="first"/> is less than <paramref name="second"/>, <c>false</c> otherwise.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Boolean operator <(Range<T> first, Range<T> second)
 		{

@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="Base16Encoding" /> class.
+	/// Provides a set of tests for <see cref="Base16Encoding"/> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]

@@ -5,21 +5,21 @@ using System.Runtime.CompilerServices;
 namespace System
 {
 	/// <summary>
-	/// Provides a set of extension methods for the <see cref="Range{T}" /> class.
+	/// Provides a set of extension methods for the <see cref="Range{T}"/> class.
 	/// </summary>
 	public static class RangeEx
 	{
 		#region Methods
 
 		/// <summary>
-		/// Sorts and combines sequences into the enumeration of <see cref="Range{T}" />.
+		/// Sorts and combines sequences into the enumeration of <see cref="Range{T}"/>.
 		/// </summary>
-		/// <typeparam name="T">The type of the elements of the <paramref name="source" />.</typeparam>
-		/// <param name="source">An <see cref="IEnumerable{T}" /> in which ranges should be looked.</param>
-		/// <param name="isNext">A delegate to the method which checks whether two instance of <typeparamref name="T" /> are next to each other.</param>
-		/// <param name="singleValues">Contains items within the <paramref name="source" /> enumeration which does not fall in to any range.</param>
-		/// <returns>Collection of ranges within the <paramref name="source" />.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="isNext" /> is <c>null</c>.</exception>
+		/// <typeparam name="T">The type of the elements of the <paramref name="source"/>.</typeparam>
+		/// <param name="source">An <see cref="IEnumerable{T}"/> in which ranges should be looked.</param>
+		/// <param name="isNext">A delegate to the method which checks whether two instance of <typeparamref name="T"/> are next to each other.</param>
+		/// <param name="singleValues">Contains items within the <paramref name="source"/> enumeration which does not fall in to any range.</param>
+		/// <returns>Collection of ranges within the <paramref name="source"/>.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="isNext"/> is <c>null</c>.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IList<Range<T>> CombineSequences<T>(this IEnumerable<T> source, Func<T, T, Boolean> isNext, out IList<T> singleValues)
 			where T : IEquatable<T>, IComparable<T>
@@ -94,9 +94,9 @@ namespace System
 		}
 
 		/// <summary>
-		/// Returns the minimum and maximum value in the <paramref name="source" /> as the instance of <see cref="Range{T}" />.
+		/// Returns the minimum and maximum value in the <paramref name="source"/> as the instance of <see cref="Range{T}"/>.
 		/// </summary>
-		/// <typeparam name="T">The type of the elements of the <paramref name="source" />.</typeparam>
+		/// <typeparam name="T">The type of the elements of the <paramref name="source"/>.</typeparam>
 		/// <param name="source">A sequence of values to determine the range.</param>
 		/// <returns>The minimum and maximum value.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -139,14 +139,14 @@ namespace System
 		}
 
 		/// <summary>
-		/// Invokes a transform function on each element of a generic sequence and returns the minimum and maximum value in the <paramref name="source" /> as the instance of <see cref="Range{T}" />.
+		/// Invokes a transform function on each element of a generic sequence and returns the minimum and maximum value in the <paramref name="source"/> as the instance of <see cref="Range{T}"/>.
 		/// </summary>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		/// <typeparam name="TResult">The type of the value returned by <paramref name="selector" />.</typeparam>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+		/// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
 		/// <param name="source">A sequence of values to determine the range.</param>
 		/// <param name="selector">A transform function to apply to each element.</param>
 		/// <returns>The minimum and maximum value.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="selector" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="selector"/> is <c>null</c>.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Range<TResult> Range<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
 			where TResult : IEquatable<TResult>, IComparable<TResult>

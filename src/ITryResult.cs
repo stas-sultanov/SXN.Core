@@ -10,7 +10,7 @@
 		#region Properties
 
 		/// <summary>
-		/// Gets an instance of <typeparamref name="T" />
+		/// Gets an instance of <typeparamref name="T"/>
 		/// if the method has completed successfully, default value otherwise.
 		/// </summary>
 		T Result
@@ -19,7 +19,7 @@
 		}
 
 		/// <summary>
-		/// Gets a <see cref="Boolean" /> value,
+		/// Gets a <see cref="Boolean"/> value,
 		/// that indicates whether the method has completed successfully.
 		/// </summary>
 		Boolean Success

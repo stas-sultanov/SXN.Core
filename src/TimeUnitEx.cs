@@ -1,7 +1,7 @@
 ﻿namespace System
 {
 	/// <summary>
-	/// Provides a set of extension methods for the <see cref="TimeUnit" /> enumeration.
+	/// Provides a set of extension methods for the <see cref="TimeUnit"/> enumeration.
 	/// </summary>
 	public static class TimeUnitEx
 	{
@@ -30,7 +30,7 @@
 		/// </summary>
 		/// <param name="timeUnit">The base time unit.</param>
 		/// <returns>The next time unit.</returns>
-		/// <exception cref="ArgumentOutOfRangeException"><paramref name="timeUnit" /> is out of the valid range.</exception>
+		/// <exception cref="ArgumentOutOfRangeException"><paramref name="timeUnit"/> is out of the valid range.</exception>
 		public static TimeUnit GetNext(this TimeUnit timeUnit)
 		{
 			var result = timeUnit.TryGetNext();
@@ -48,7 +48,7 @@
 		/// </summary>
 		/// <param name="timeUnit">The base time unit.</param>
 		/// <returns>The previous time unit.</returns>
-		/// <exception cref="ArgumentOutOfRangeException"><paramref name="timeUnit" /> is out of the valid range.</exception>
+		/// <exception cref="ArgumentOutOfRangeException"><paramref name="timeUnit"/> is out of the valid range.</exception>
 		public static TimeUnit GetPrevious(this TimeUnit timeUnit)
 		{
 			var result = timeUnit.TryGetPrevious();
@@ -66,9 +66,9 @@
 		/// </summary>
 		/// <param name="timeUnit">The base time unit.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result" /> contains the next time unit if operation was successful, <see cref="TimeUnit.None" /> otherwise.
+		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result"/> contains the next time unit if operation was successful, <see cref="TimeUnit.None"/> otherwise.
 		/// </returns>
 		public static TryResult<TimeUnit> TryGetNext(this TimeUnit timeUnit)
 		{
@@ -106,9 +106,9 @@
 		/// </summary>
 		/// <param name="timeUnit">The base time unit.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result" /> contains the previous time unit if operation was successful, <see cref="TimeUnit.None" /> otherwise.
+		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result"/> contains the previous time unit if operation was successful, <see cref="TimeUnit.None"/> otherwise.
 		/// </returns>
 		public static TryResult<TimeUnit> TryGetPrevious(this TimeUnit timeUnit)
 		{

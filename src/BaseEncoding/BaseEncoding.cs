@@ -34,12 +34,12 @@ namespace System
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="BaseEncoding" /> class.
+		/// Initializes a new instance of <see cref="BaseEncoding"/> class.
 		/// </summary>
 		/// <param name="encodingBase">The base of the encoding.</param>
 		/// <param name="alphabet">The alphabet.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="alphabet" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException">The count of items in the <paramref name="alphabet" /> is not equal to <see cref="Base" />.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="alphabet"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException">The count of items in the <paramref name="alphabet"/> is not equal to <see cref="Base"/>.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected BaseEncoding(Byte encodingBase, String alphabet)
 			: this(encodingBase, alphabet, BuildLookupTable(alphabet))
@@ -47,15 +47,15 @@ namespace System
 		}
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="BaseEncoding" /> class.
+		/// Initializes a new instance of <see cref="BaseEncoding"/> class.
 		/// </summary>
 		/// <param name="encodingBase">The base of the encoding.</param>
 		/// <param name="alphabet">The alphabet.</param>
 		/// <param name="lookupTable">The custom look-up table.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="alphabet" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException">The count of items in the <paramref name="alphabet" /> is not equal to <see cref="Base" />.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="lookupTable" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException">The count of items in the <paramref name="lookupTable" /> is not equal to 128.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="alphabet"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException">The count of items in the <paramref name="alphabet"/> is not equal to <see cref="Base"/>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="lookupTable"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException">The count of items in the <paramref name="lookupTable"/> is not equal to 128.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected BaseEncoding(Byte encodingBase, String alphabet, Byte[] lookupTable)
 		{
@@ -121,8 +121,8 @@ namespace System
 		/// </summary>
 		/// <param name="alphabet">The alphabet.</param>
 		/// <returns>The look-up table</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="alphabet" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException">The count of items in the <paramref name="alphabet" /> is greater than 128.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="alphabet"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException">The count of items in the <paramref name="alphabet"/> is greater than 128.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Byte[] BuildLookupTable(String alphabet)
 		{
@@ -159,12 +159,12 @@ namespace System
 		#endregion
 
 		/// <summary>
-		/// Decodes the specified string, which encodes binary data with <see cref="Alphabet" />, to an equivalent 8-bit unsigned integer array.
+		/// Decodes the specified string, which encodes binary data with <see cref="Alphabet"/>, to an equivalent 8-bit unsigned integer array.
 		/// </summary>
 		/// <param name="data">The string to convert.</param>
-		/// <returns>An array of 8-bit unsigned integers that is equivalent to <paramref name="data" />.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="data" /> is <c>null</c>.</exception>
-		/// <exception cref="FormatException">The format of <paramref name="data" /> is invalid.</exception>
+		/// <returns>An array of 8-bit unsigned integers that is equivalent to <paramref name="data"/>.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="data"/> is <c>null</c>.</exception>
+		/// <exception cref="FormatException">The format of <paramref name="data"/> is invalid.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Byte[] Decode(String data)
 		{
@@ -186,17 +186,17 @@ namespace System
 		}
 
 		/// <summary>
-		/// Decodes the specified string, which encodes binary data with <see cref="Alphabet" />, to an equivalent 8-bit unsigned integer array.
+		/// Decodes the specified string, which encodes binary data with <see cref="Alphabet"/>, to an equivalent 8-bit unsigned integer array.
 		/// </summary>
 		/// <param name="data">The string to convert.</param>
-		/// <param name="offset">An offset in <paramref name="data" />.</param>
-		/// <param name="count">The number of elements of <paramref name="data" /> to convert.</param>
-		/// <returns>The string representation of <paramref name="count" /> elements of <paramref name="data" />, starting at position <paramref name="offset" />.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="data" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentOutOfRangeException"><paramref name="count" /> is less than<c>0</c>.</exception>
-		/// <exception cref="ArgumentOutOfRangeException"><paramref name="offset" /> is less than<c>0</c>.</exception>
-		/// <exception cref="ArgumentOutOfRangeException"><paramref name="offset" /> plus <paramref name="count" /> is greater than count of items in <paramref name="data" />.</exception>
-		/// <exception cref="FormatException">The format of <paramref name="data" /> is invalid.</exception>
+		/// <param name="offset">An offset in <paramref name="data"/>.</param>
+		/// <param name="count">The number of elements of <paramref name="data"/> to convert.</param>
+		/// <returns>The string representation of <paramref name="count"/> elements of <paramref name="data"/>, starting at position <paramref name="offset"/>.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="data"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is less than<c>0</c>.</exception>
+		/// <exception cref="ArgumentOutOfRangeException"><paramref name="offset"/> is less than<c>0</c>.</exception>
+		/// <exception cref="ArgumentOutOfRangeException"><paramref name="offset"/> plus <paramref name="count"/> is greater than count of items in <paramref name="data"/>.</exception>
+		/// <exception cref="FormatException">The format of <paramref name="data"/> is invalid.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Byte[] Decode(String data, Int32 offset, Int32 count)
 		{
@@ -242,11 +242,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Encodes an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="Alphabet" />.
+		/// Encodes an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="Alphabet"/>.
 		/// </summary>
 		/// <param name="data">An array of 8-bit unsigned integers.</param>
-		/// <returns>The string representation, of the contents of <paramref name="data" />.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="data" /> is <c>null</c>.</exception>
+		/// <returns>The string representation, of the contents of <paramref name="data"/>.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="data"/> is <c>null</c>.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public String Encode(Byte[] data)
 		{
@@ -267,16 +267,16 @@ namespace System
 		}
 
 		/// <summary>
-		/// Encodes a subset of an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="Alphabet" />.
+		/// Encodes a subset of an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="Alphabet"/>.
 		/// </summary>
 		/// <param name="data">An array of 8-bit unsigned integers.</param>
-		/// <param name="offset">An offset in <paramref name="data" />.</param>
-		/// <param name="count">The number of elements of <paramref name="data" /> to convert.</param>
-		/// <returns>The string representation of <paramref name="count" /> elements of <paramref name="data" />, starting at position <paramref name="offset" />.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="data" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentOutOfRangeException"><paramref name="count" /> is less than<c>0</c>.</exception>
-		/// <exception cref="ArgumentOutOfRangeException"><paramref name="offset" /> is less than<c>0</c>.</exception>
-		/// <exception cref="ArgumentOutOfRangeException"><paramref name="offset" /> plus <paramref name="count" /> is greater than count of items in <paramref name="data" />.</exception>
+		/// <param name="offset">An offset in <paramref name="data"/>.</param>
+		/// <param name="count">The number of elements of <paramref name="data"/> to convert.</param>
+		/// <returns>The string representation of <paramref name="count"/> elements of <paramref name="data"/>, starting at position <paramref name="offset"/>.</returns>
+		/// <exception cref="ArgumentNullException"><paramref name="data"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is less than<c>0</c>.</exception>
+		/// <exception cref="ArgumentOutOfRangeException"><paramref name="offset"/> is less than<c>0</c>.</exception>
+		/// <exception cref="ArgumentOutOfRangeException"><paramref name="offset"/> plus <paramref name="count"/> is greater than count of items in <paramref name="data"/>.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public String Encode(Byte[] data, Int32 offset, Int32 count)
 		{
@@ -315,13 +315,13 @@ namespace System
 		}
 
 		/// <summary>
-		/// Tries to decode the specified string, which encodes binary data with <see cref="Alphabet" />, to an equivalent 8-bit unsigned integer array.
+		/// Tries to decode the specified string, which encodes binary data with <see cref="Alphabet"/>, to an equivalent 8-bit unsigned integer array.
 		/// </summary>
 		/// <param name="data">The string to convert.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result" /> contains array of 8-bit unsigned integers that is equivalent to <paramref name="data" /> if operation was successful, <c>null</c> otherwise.
+		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result"/> contains array of 8-bit unsigned integers that is equivalent to <paramref name="data"/> if operation was successful, <c>null</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public TryResult<Byte[]> TryDecode(String data)
@@ -339,15 +339,15 @@ namespace System
 		}
 
 		/// <summary>
-		/// Tries to decode the specified string, which encodes binary data with <see cref="Alphabet" />, to an equivalent 8-bit unsigned integer array.
+		/// Tries to decode the specified string, which encodes binary data with <see cref="Alphabet"/>, to an equivalent 8-bit unsigned integer array.
 		/// </summary>
 		/// <param name="data">The string to convert.</param>
-		/// <param name="offset">An offset in <paramref name="data" />.</param>
-		/// <param name="count">The number of elements of <paramref name="data" /> to convert.</param>
+		/// <param name="offset">An offset in <paramref name="data"/>.</param>
+		/// <param name="count">The number of elements of <paramref name="data"/> to convert.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result" /> contains array of 8-bit unsigned integers that is equivalent to <paramref name="count" /> elements of <paramref name="data" /> starting at position <paramref name="offset" /> if operation was successful, <c>null</c> otherwise.
+		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result"/> contains array of 8-bit unsigned integers that is equivalent to <paramref name="count"/> elements of <paramref name="data"/> starting at position <paramref name="offset"/> if operation was successful, <c>null</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public TryResult<Byte[]> TryDecode(String data, Int32 offset, Int32 count)
@@ -383,13 +383,13 @@ namespace System
 		}
 
 		/// <summary>
-		/// Tries to encode an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="Alphabet" />.
+		/// Tries to encode an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="Alphabet"/>.
 		/// </summary>
 		/// <param name="data">An array of 8-bit unsigned integers.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result" /> contains the string representation of the contents of <paramref name="data" /> if operation was successful, <c>null</c> otherwise.
+		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result"/> contains the string representation of the contents of <paramref name="data"/> if operation was successful, <c>null</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public TryResult<String> TryEncode(Byte[] data)
@@ -407,15 +407,15 @@ namespace System
 		}
 
 		/// <summary>
-		/// Tries to encode a subset of an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="Alphabet" />.
+		/// Tries to encode a subset of an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="Alphabet"/>.
 		/// </summary>
 		/// <param name="data">An array of 8-bit unsigned integers.</param>
-		/// <param name="offset">An offset in <paramref name="data" />.</param>
-		/// <param name="count">The number of elements of <paramref name="data" /> to convert.</param>
+		/// <param name="offset">An offset in <paramref name="data"/>.</param>
+		/// <param name="count">The number of elements of <paramref name="data"/> to convert.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result" /> contains string representation of <paramref name="count" /> elements of <paramref name="data" /> starting at position <paramref name="offset" /> if operation was successful, <c>null</c> otherwise.
+		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result"/> contains string representation of <paramref name="count"/> elements of <paramref name="data"/> starting at position <paramref name="offset"/> if operation was successful, <c>null</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public TryResult<String> TryEncode(Byte[] data, Int32 offset, Int32 count)
@@ -455,22 +455,22 @@ namespace System
 		#region Abstract methods
 
 		/// <summary>
-		/// Encodes an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="Alphabet" />.
+		/// Encodes an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="Alphabet"/>.
 		/// </summary>
 		/// <param name="data">An array of 8-bit unsigned integers to convert.</param>
-		/// <param name="offset">An offset in <paramref name="data" />.</param>
-		/// <param name="count">The number of elements of <paramref name="data" /> to convert.</param>
-		/// <returns>The string representation of <paramref name="count" /> elements of <paramref name="data" />, starting at position <paramref name="offset" />.</returns>
+		/// <param name="offset">An offset in <paramref name="data"/>.</param>
+		/// <param name="count">The number of elements of <paramref name="data"/> to convert.</param>
+		/// <returns>The string representation of <paramref name="count"/> elements of <paramref name="data"/>, starting at position <paramref name="offset"/>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected abstract String EncodeInternal(Byte[] data, Int32 offset, Int32 count);
 
 		/// <summary>
-		/// Decodes the specified string, which encodes binary data with <see cref="Alphabet" />, to an equivalent 8-bit unsigned integer array.
+		/// Decodes the specified string, which encodes binary data with <see cref="Alphabet"/>, to an equivalent 8-bit unsigned integer array.
 		/// </summary>
 		/// <param name="data">The string to convert.</param>
-		/// <param name="offset">An offset in <paramref name="data" />.</param>
-		/// <param name="count">The number of elements of <paramref name="data" /> to convert.</param>
-		/// <returns>An array of 8-bit unsigned integers that is equivalent to <paramref name="count" /> elements of <paramref name="data" />, starting at position <paramref name="offset" />.</returns>
+		/// <param name="offset">An offset in <paramref name="data"/>.</param>
+		/// <param name="count">The number of elements of <paramref name="data"/> to convert.</param>
+		/// <returns>An array of 8-bit unsigned integers that is equivalent to <paramref name="count"/> elements of <paramref name="data"/>, starting at position <paramref name="offset"/>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected abstract Byte[] DecodeInternal(String data, Int32 offset, Int32 count);
 

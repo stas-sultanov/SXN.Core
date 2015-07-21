@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="Base32Encoding" /> class.
+	/// Provides a set of tests for <see cref="Base32Encoding"/> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]

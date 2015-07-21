@@ -27,8 +27,8 @@ namespace System.ServiceModel
 		/// Initiates an asynchronous operation to try processes the request.
 		/// </summary>
 		/// <returns>
-		/// A <see cref="Task{TResult}" /> object of type <see cref="Boolean" />> that represents the asynchronous operation.
-		/// <see cref="Task{TResult}.Result" /> equals <c>true</c> if operation has completed successfully, <c>false</c> otherwise.
+		/// A <see cref="Task{TResult}"/> object of type <see cref="Boolean"/>> that represents the asynchronous operation.
+		/// <see cref="Task{TResult}.Result"/> equals <c>true</c> if operation has completed successfully, <c>false</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		Task<Boolean> TryProcessAsync();

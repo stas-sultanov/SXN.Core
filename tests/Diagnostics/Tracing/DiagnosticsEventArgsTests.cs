@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace System.Diagnostics.Tracing
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="DiagnosticsEventArgsTests" /> class.
+	/// Provides a set of tests for <see cref="DiagnosticsEventArgsTests"/> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]

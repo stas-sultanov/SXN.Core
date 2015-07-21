@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Runtime.CompilerServices;
 
 namespace System.Collections.Generic
@@ -29,7 +28,7 @@ namespace System.Collections.Generic
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ArneTreeNode{TValue, TKey}" /> class.
+		/// Initializes a new instance of the <see cref="ArneTreeNode{TValue, TKey}"/> class.
 		/// </summary>
 		/// <param name="value">The data of the node.</param>
 		/// <param name="level">The level in the tree.</param>
@@ -47,7 +46,7 @@ namespace System.Collections.Generic
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ArneTreeNode{TValue, TKey}" /> class.
+		/// Initializes a new instance of the <see cref="ArneTreeNode{TValue, TKey}"/> class.
 		/// </summary>
 		/// <param name="value">The data of the node.</param>
 		/// <param name="level">The level in the tree.</param>

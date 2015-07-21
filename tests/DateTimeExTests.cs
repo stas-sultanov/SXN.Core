@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="DateTimeEx" /> class.
+	/// Provides a set of tests for <see cref="DateTimeEx"/> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]

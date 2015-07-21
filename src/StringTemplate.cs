@@ -11,9 +11,122 @@ namespace System
 	/// <summary>
 	/// Provides creation of strings by using template and arguments.
 	/// </summary>
-	public sealed class StringTemplate
+	public static class StringTemplate
+	{
+		#region Methods
+
+		/// <summary>
+		/// Initializes a new instance of <see cref="StringTemplate{T}"/> class.
+		/// </summary>
+		/// <param name="encoding">The <see cref="Encoding"/> which is used for the template instantiation.</param>
+		/// <param name="template">The string template.</param>
+		/// <param name="variables">The collection of the variables within the template.</param>
+		/// <exception cref="ArgumentNullException"><paramref name="encoding"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="template"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException"><paramref name="template"/> is empty.</exception>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static StringTemplate<String> Initialize(Encoding encoding, String template, params String[] variables)
+		{
+			return Initialize(encoding, template, (IReadOnlyList<String>) variables);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of <see cref="StringTemplate{T}"/> class.
+		/// </summary>
+		/// <param name="encoding">The <see cref="Encoding"/> which is used for the template instantiation.</param>
+		/// <param name="template">The string template.</param>
+		/// <param name="variables">The collection of the variables within the template.</param>
+		/// <exception cref="ArgumentNullException"><paramref name="encoding"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="template"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="variables"/> is <c>null</c>.</exception>
+		public static StringTemplate<String> Initialize(Encoding encoding, String template, IReadOnlyList<String> variables)
+		{
+			// Check argument
+			if (variables == null)
+			{
+				throw new ArgumentNullException(nameof(variables));
+			}
+
+			// Get variables keys
+			var variablesKeys = variables.ToDictionary(x => x);
+
+			return new StringTemplate<String>(encoding, template, variablesKeys);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of <see cref="StringTemplate{T}"/> class.
+		/// </summary>
+		/// <param name="encoding">The <see cref="Encoding"/> which is used for the template instantiation.</param>
+		/// <param name="template">The string template.</param>
+		/// <param name="variablesKeys">The collection of the variables within the template.</param>
+		/// <exception cref="ArgumentNullException"><paramref name="encoding"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="template"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="variablesKeys"/> is <c>null</c>.</exception>
+		public static StringTemplate<T> Initialize<T>(Encoding encoding, String template, IReadOnlyDictionary<String, T> variablesKeys)
+		{
+			// Check argument
+			if (encoding == null)
+			{
+				throw new ArgumentNullException(nameof(encoding));
+			}
+
+			// Check argument
+			if (template == null)
+			{
+				throw new ArgumentNullException(nameof(template));
+			}
+
+			return new StringTemplate<T>(encoding, template, variablesKeys);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of <see cref="StringTemplate{T}"/> class.
+		/// </summary>
+		/// <param name="encoding">The <see cref="Encoding"/> which is used for the template instantiation.</param>
+		/// <param name="template">The string template.</param>
+		/// <param name="variablesPattern">The <see cref="Regex"/> pattern of the variables.</param>
+		/// <exception cref="ArgumentNullException"><paramref name="encoding"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="template"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException"><paramref name="template"/> is empty.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="variablesPattern"/> is <c>null</c>.</exception>
+		public static StringTemplate<String> Initialize(Encoding encoding, String template, String variablesPattern)
+		{
+			// Check argument
+			if (encoding == null)
+			{
+				throw new ArgumentNullException(nameof(encoding));
+			}
+
+			// Check argument
+			if (template == null)
+			{
+				throw new ArgumentNullException(nameof(template));
+			}
+
+			// Check argument
+			if (variablesPattern == null)
+			{
+				throw new ArgumentNullException(nameof(variablesPattern));
+			}
+
+			// Get variables keys
+			var variablesKeys = Regex.Matches(template, variablesPattern).Cast<Match>().Select(match => match.Value).Distinct().ToDictionary(x => x);
+
+			return new StringTemplate<String>(encoding, template, variablesKeys);
+		}
+
+		#endregion
+	}
+
+	/// <summary>
+	/// Provides creation of strings by using template and arguments.
+	/// </summary>
+	/// <typeparam name="T">The type of the key of the variable.</typeparam>
+	public sealed class StringTemplate<T>
 	{
 		#region Nested Types
+
+		public delegate Boolean TryGetValue(T key, out String value);
 
 		/// <summary>
 		/// Encapsulates information about the variable within the string template.
@@ -23,16 +136,16 @@ namespace System
 			#region Constructors
 
 			/// <summary>
-			/// Initializes a new instance of the <see cref="VariableInfo" /> structure.
+			/// Initializes a new instance of the <see cref="VariableInfo"/> structure.
 			/// </summary>
-			/// <param name="name">The name of the variable.</param>
-			/// <param name="index"></param>
+			/// <param name="key">The key of the variable.</param>
+			/// <param name="index">The index of the variable.</param>
 			/// <param name="beginIndex">The index of the beginning of the variable within the string template.</param>
 			/// <param name="endIndex">The index of the ending of the variable within the string template.</param>
-			internal VariableInfo(String name, Int32 index, Int32 beginIndex, Int32 endIndex)
+			internal VariableInfo(T key, Int32 index, Int32 beginIndex, Int32 endIndex)
 				: this()
 			{
-				Name = name;
+				Key = key;
 
 				Index = index;
 
@@ -62,7 +175,7 @@ namespace System
 			}
 
 			/// <summary>
-			/// The index of
+			/// The index of the variable.
 			/// </summary>
 			internal Int32 Index
 			{
@@ -70,9 +183,9 @@ namespace System
 			}
 
 			/// <summary>
-			/// The name of the variable.
+			/// The key of the variable.
 			/// </summary>
-			internal String Name
+			internal T Key
 			{
 				get;
 			}
@@ -85,81 +198,89 @@ namespace System
 		/// </summary>
 		private struct Segment
 		{
-			#region Fields
-
-			/// <summary>
-			/// The data of the argument if segment is constant.
-			/// </summary>
-			internal readonly String data;
-
-			/// <summary>
-			/// The encoded data of the argument if segment is constant.
-			/// </summary>
-			internal readonly Byte[] encodedData;
-
-			/// <summary>
-			/// The index of the argument if segment is variable.
-			/// </summary>
-			internal readonly Int32 index;
-
-			/// <summary>
-			/// Specifies whether template segment is variable.
-			/// </summary>
-			internal readonly Boolean isVariable;
-
-			/// <summary>
-			/// The name of the segment.
-			/// </summary>
-			internal readonly String name;
-
-			#endregion
-
 			#region Constructors
 
 			/// <summary>
-			/// Initializes a new instance of <see cref="Segment" /> structure.
+			/// Initializes a new instance of <see cref="Segment"/> structure.
 			/// </summary>
 			/// <param name="index">The index of the argument if segment is variable.</param>
 			/// <param name="data">The data of the argument if segment is constant.</param>
 			/// <param name="encodedData">The encoded data of the argument if segment is constant.</param>
-			/// <param name="name">The name of the argument.</param>
+			/// <param name="variableKey">The key of the variable</param>
 			[MethodImpl(MethodImplOptions.AggressiveInlining)]
-			internal Segment(Int32 index, String data = null, Byte[] encodedData = null, String name = null)
+			internal Segment(Int32 index, String data = null, Byte[] encodedData = null, T variableKey = default(T))
+				: this()
 			{
-				this.index = index;
+				Index = index;
 
-				this.data = data;
+				Data = data;
 
-				this.encodedData = encodedData;
+				EncodedData = encodedData;
 
-				this.name = name;
+				VariableKey = variableKey;
 
-				isVariable = data == null;
+				IsVariable = data == null;
+			}
+
+			#endregion
+
+			#region Properties
+
+			/// <summary>
+			/// The data of the argument if segment is constant.
+			/// </summary>
+			public String Data
+			{
+				get;
+			}
+
+			/// <summary>
+			/// The encoded data of the argument if segment is constant.
+			/// </summary>
+			public Byte[] EncodedData
+			{
+				get;
+			}
+
+			/// <summary>
+			/// The index of the argument if segment is variable.
+			/// </summary>
+			public Int32 Index
+			{
+				get;
+			}
+
+			/// <summary>
+			/// Specifies whether template segment is variable.
+			/// </summary>
+			public Boolean IsVariable
+			{
+				get;
+			}
+
+			/// <summary>
+			/// The key of the variable.
+			/// </summary>
+			public T VariableKey
+			{
+				get;
 			}
 
 			#endregion
 		}
-
-		#endregion
-
-		#region Fields
-
-		private readonly Segment[] segments;
 
 		#endregion
 
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="StringTemplate" /> class.
+		/// Initializes a new instance of <see cref="StringTemplate{T}"/> class.
 		/// </summary>
-		/// <param name="encoding">The <see cref="Encoding" /> which is used for the template instantiation.</param>
+		/// <param name="encoding">The <see cref="Encoding"/> which is used for the template instantiation.</param>
 		/// <param name="template">The string template.</param>
-		/// <param name="variablesPattern">The <see cref="Regex" /> pattern of the variables.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="encoding" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="template" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException"><paramref name="template" /> is empty.</exception>
-		public StringTemplate(Encoding encoding, String template, String variablesPattern)
+		/// <param name="expectedVariablesKeys">The collection of the expected variables within the template.</param>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal StringTemplate(Encoding encoding, String template, IReadOnlyDictionary<String, T> expectedVariablesKeys)
 		{
 			// Check argument
 			if (encoding == null)
@@ -167,81 +288,25 @@ namespace System
 				throw new ArgumentNullException(nameof(encoding));
 			}
 
-			Encoding = encoding;
-
 			// Check argument
 			if (template == null)
 			{
 				throw new ArgumentNullException(nameof(template));
 			}
 
-			Template = template;
-
 			// Check argument
-			if (variablesPattern == null)
+			if (expectedVariablesKeys == null)
 			{
-				throw new ArgumentNullException(nameof(variablesPattern));
-			}
-
-			// Find variables that matches the pattern
-			Variables = Regex.Matches(template, variablesPattern).Cast<Match>().Select(match => match.Value).Distinct().ToArray();
-
-			// Get segments
-			segments = GetSegments(encoding, template, Variables);
-		}
-
-		/// <summary>
-		/// Initializes a new instance of <see cref="StringTemplate" /> class.
-		/// </summary>
-		/// <param name="encoding">The <see cref="Encoding" /> which is used for the template instantiation.</param>
-		/// <param name="template">The string template.</param>
-		/// <param name="variables">The collection of the variables within the template.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="encoding" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="template" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException"><paramref name="template" /> is empty.</exception>
-		public StringTemplate(Encoding encoding, String template, params String[] variables)
-			: this(encoding, template, (IReadOnlyList<String>) variables)
-		{
-		}
-
-		/// <summary>
-		/// Initializes a new instance of <see cref="StringTemplate" /> class.
-		/// </summary>
-		/// <param name="encoding">The <see cref="Encoding" /> which is used for the template instantiation.</param>
-		/// <param name="template">The string template.</param>
-		/// <param name="variables">The collection of the variables within the template.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="encoding" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="template" /> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="variables" /> is <c>null</c>.</exception>
-		public StringTemplate(Encoding encoding, String template, IReadOnlyList<String> variables)
-		{
-			// Check argument
-			if (encoding == null)
-			{
-				throw new ArgumentNullException(nameof(encoding));
+				throw new ArgumentNullException(nameof(expectedVariablesKeys));
 			}
 
 			Encoding = encoding;
 
-			// Check argument
-			if (template == null)
-			{
-				throw new ArgumentNullException(nameof(template));
-			}
-
 			Template = template;
 
-			// Check argument
-			if (variables == null)
-			{
-				throw new ArgumentNullException(nameof(variables));
-			}
+			Segments = GetSegments(expectedVariablesKeys);
 
-			// Set variables
-			Variables = variables;
-
-			// Get segments
-			segments = GetSegments(encoding, template, variables);
+			Variables = Segments.Where(segment => segment.IsVariable).Select(segment => segment.VariableKey).ToArray();
 		}
 
 		#endregion
@@ -249,9 +314,17 @@ namespace System
 		#region Properties
 
 		/// <summary>
-		/// Gets the <see cref="Encoding" /> which is used for the template instantiation.
+		/// Gets the <see cref="Encoding"/> which is used for the template instantiation.
 		/// </summary>
 		public Encoding Encoding
+		{
+			get;
+		}
+
+		/// <summary>
+		/// The collection of the segments of the template.
+		/// </summary>
+		private Segment[] Segments
 		{
 			get;
 		}
@@ -262,14 +335,12 @@ namespace System
 		public String Template
 		{
 			get;
-
-			private set;
 		}
 
 		/// <summary>
 		/// The collection of the names of the variables within the template.
 		/// </summary>
-		public IReadOnlyList<String> Variables
+		public IReadOnlyList<T> Variables
 		{
 			get;
 		}
@@ -279,37 +350,34 @@ namespace System
 		#region Private methods
 
 		/// <summary>
-		/// Parses the <paramref name="template" /> and gets the collection of segments.
+		/// Parses the template and gets the collection of segments.
 		/// </summary>
-		/// <param name="encoding">The <see cref="Encoding" /> which is used for the template instantiation.</param>
-		/// <param name="template">The string template.</param>
-		/// <param name="variables">The collection of the variables within the template.</param>
-		private static Segment[] GetSegments(Encoding encoding, String template, IReadOnlyList<String> variables)
+		/// <param name="expectedVariablesKeys">The collection of the expected variables within the template.</param>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		private Segment[] GetSegments(IReadOnlyCollection<KeyValuePair<String, T>> expectedVariablesKeys)
 		{
-			// Check if there is no variables in template
-			if (variables.Count == 0)
+			// Check if there is no expected variables
+			if (expectedVariablesKeys.Count == 0)
 			{
 				return new[]
 				{
-					new Segment(0, template)
+					new Segment(0, Template)
 				};
 			}
 
-			var variableSegments = new List<VariableInfo>();
+			// Try find variables in template
+			var variables = new List<VariableInfo>();
 
-			Int32 currentIndex;
+			Int32 argumentIndex = 0, templatePointerPosition;
 
-			for (var argumentIndex = 0; argumentIndex < variables.Count; argumentIndex++)
+			foreach (var variable in expectedVariablesKeys)
 			{
-				// Get argument
-				var variableName = variables[argumentIndex];
-
-				currentIndex = 0;
+				templatePointerPosition = 0;
 
 				while (true)
 				{
 					// Get argument start index
-					var argumentStartIndex = template.IndexOf(variableName, currentIndex, StringComparison.Ordinal);
+					var argumentStartIndex = Template.IndexOf(variable.Key, templatePointerPosition, StringComparison.Ordinal);
 
 					if (argumentStartIndex == -1)
 					{
@@ -317,19 +385,30 @@ namespace System
 					}
 
 					// Calculate argument end index
-					var argumentEndIndex = argumentStartIndex + variableName.Length;
+					var argumentEndIndex = argumentStartIndex + variable.Key.Length;
 
 					// Add to the list
-					variableSegments.Add(new VariableInfo(variableName, argumentIndex, argumentStartIndex, argumentEndIndex));
+					variables.Add(new VariableInfo(variable.Value, argumentIndex, argumentStartIndex, argumentEndIndex));
 
-					currentIndex = argumentEndIndex;
+					templatePointerPosition = argumentEndIndex;
 				}
+
+				argumentIndex++;
 			}
 
-			currentIndex = 0;
+			// Check if there is no variables
+			if (variables.Count == 0)
+			{
+				return new[]
+				{
+					new Segment(0, Template)
+				};
+			}
+
+			templatePointerPosition = 0;
 
 			// Sort by start index
-			var sortedList = variableSegments.OrderBy(x => x.BeginIndex).ToArray();
+			var sortedList = variables.OrderBy(x => x.BeginIndex).ToArray();
 
 			var result = new List<Segment>();
 
@@ -343,29 +422,29 @@ namespace System
 				if (argument.BeginIndex != 0)
 				{
 					// Get sub string
-					subString = template.Substring(currentIndex, argument.BeginIndex - currentIndex);
+					subString = Template.Substring(templatePointerPosition, argument.BeginIndex - templatePointerPosition);
 
 					// Add constant segment
-					result.Add(new Segment(-1, subString, encoding.GetBytes(subString)));
+					result.Add(new Segment(-1, subString, Encoding.GetBytes(subString)));
 				}
 
 				// Add variable segment
-				result.Add(new Segment(argument.Index, null, null, argument.Name));
+				result.Add(new Segment(argument.Index, null, null, argument.Key));
 
 				// Update current index
-				currentIndex = argument.EndIndex;
+				templatePointerPosition = argument.EndIndex;
 
 				// Check if argument is last and there is no more const data
-				if ((index != sortedList.Length - 1) || (argument.EndIndex >= template.Length - 1))
+				if ((index != sortedList.Length - 1) || (argument.EndIndex >= Template.Length - 1))
 				{
 					continue;
 				}
 
 				// Get sub string
-				subString = template.Substring(currentIndex, template.Length - argument.EndIndex);
+				subString = Template.Substring(templatePointerPosition, Template.Length - argument.EndIndex);
 
 				// Add constant segment
-				result.Add(new Segment(-1, subString, encoding.GetBytes(subString)));
+				result.Add(new Segment(-1, subString, Encoding.GetBytes(subString)));
 			}
 
 			return result.ToArray();
@@ -376,97 +455,70 @@ namespace System
 		#region Methods
 
 		/// <summary>
-		/// Encodes arguments with <see cref="Encoding" /> into a sequence of bytes.
+		/// Instantiates the template using collection of <paramref name="arguments"/> specified.
 		/// </summary>
-		/// <param name="arguments">A dictionary of arguments to encode.</param>
-		/// <returns>A dictionary of encoded arguments.</returns>
+		/// <param name="arguments">The collection of the arguments to use for template instantiation.</param>
+		/// <returns>An instance of the template.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public IReadOnlyDictionary<String, Byte[]> EncodeArguments(IReadOnlyDictionary<String, String> arguments)
+		public String Instantiate(params String[] arguments)
 		{
-			var result = new Dictionary<String, Byte[]>(arguments.Count);
-
-			foreach (var pair in arguments)
-			{
-				result.Add(pair.Key, Encoding.GetBytes(pair.Value));
-			}
-
-			return result;
+			return Instantiate((IReadOnlyList<String>) arguments);
 		}
 
 		/// <summary>
-		/// Encodes arguments with <see cref="Encoding" /> into a sequence of bytes.
+		/// Instantiates the template using the collection of <paramref name="arguments"/>.
 		/// </summary>
-		/// <param name="args">An array of arguments to encode.</param>
-		/// <returns>An array of encoded arguments.</returns>
+		/// <param name="arguments">The collection of the arguments to use for template instantiation.</param>
+		/// <returns>An instance of the template.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public IReadOnlyList<Byte[]> EncodeArguments(params String[] args)
-		{
-			var result = new Byte[args.Length][];
-
-			for (var index = 0; index < args.Length; index++)
-			{
-				var argument = args[index];
-
-				result[index] = Encoding.GetBytes(argument);
-			}
-
-			return result;
-		}
-
-		/// <summary>
-		/// Instantiates the template using <paramref name="args" /> specified.
-		/// </summary>
-		/// <param name="args">An array of the arguments to use for template instantiation.</param>
-		/// <returns>A string instance of template.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public String Instantiate(params String[] args)
+		public String Instantiate(IReadOnlyList<String> arguments)
 		{
 			// Check if template contains only one not variable segment
-			if (segments.Length == 1 && !segments[0].isVariable)
+			if (Segments.Length == 1 && !Segments[0].IsVariable)
 			{
-				return segments[0].data;
+				return Segments[0].Data;
 			}
 
 			var builedr = new StringBuilder();
 
-			foreach (var item in segments)
+			foreach (var item in Segments)
 			{
-				builedr.Append(item.isVariable ? args[item.index] : item.data);
+				builedr.Append(item.IsVariable ? arguments[item.Index] : item.Data);
 			}
 
 			return builedr.ToString();
 		}
 
 		/// <summary>
-		/// Instantiates the template using <paramref name="args" /> specified.
+		/// Instantiates the template using <paramref name="tryGetValue"/> method.
 		/// </summary>
-		/// <param name="args">A dictionary of the arguments to use for template instantiation.</param>
-		/// <returns>A string instance of template.</returns>
+		/// <param name="tryGetValue">A delegate to the method which tries to get value of the argument by name.</param>
+		/// <returns>An instance of the template.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public String Instantiate(IReadOnlyDictionary<String, String> args)
+		public String Instantiate(TryGetValue tryGetValue)
 		{
 			// Check if template contains only one not variable segment
-			if (segments.Length == 1 && !segments[0].isVariable)
+			if (Segments.Length == 1 && !Segments[0].IsVariable)
 			{
-				return segments[0].data;
+				return Segments[0].Data;
 			}
 
 			var builedr = new StringBuilder();
 
-			foreach (var item in segments)
+			foreach (var item in Segments)
 			{
-				if (item.isVariable)
+				if (item.IsVariable)
 				{
 					String data;
 
-					if (args.TryGetValue(item.name, out data))
+					if (tryGetValue(item.VariableKey, out data))
 					{
 						builedr.Append(data);
 					}
 				}
 				else
 				{
-					builedr.Append(item.data);
+					builedr.Append(item.Data);
 				}
 			}
 
@@ -474,106 +526,165 @@ namespace System
 		}
 
 		/// <summary>
-		/// Instantiates the template using specified <paramref name="encodedArguments" />.
+		/// Instantiates the template using the collection of <paramref name="arguments"/>.
 		/// </summary>
 		/// <param name="stream">The output stream for the instance of the template.</param>
-		/// <param name="encodedArguments">An array of the encoded arguments to use for template instantiation.</param>
+		/// <param name="arguments">An array of the encoded arguments to use for template instantiation.</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public void Instantiate(Stream stream, IReadOnlyList<Byte[]> encodedArguments)
+		public void Instantiate(Stream stream, params String[] arguments)
 		{
-			for (var index = 0; index < segments.Length; index++)
-			{
-				var segment = segments[index];
-
-				if (segment.isVariable)
-				{
-					var ancodedArgument = encodedArguments[segment.index];
-
-					stream.Write(ancodedArgument, 0, ancodedArgument.Length);
-				}
-				else
-				{
-					stream.Write(segment.encodedData, 0, segment.encodedData.Length);
-				}
-			}
+			Instantiate(stream, (IReadOnlyList<String>) arguments);
 		}
 
 		/// <summary>
-		/// Instantiates the template using specified <paramref name="encodedArguments" />.
+		/// Instantiates the template using the collection of <paramref name="arguments"/>.
 		/// </summary>
-		/// <param name="stream">An output stream for the instance of the template.</param>
-		/// <param name="encodedArguments">A dictionary of the encoded arguments to use for template instantiation.</param>
+		/// <param name="stream">The output stream for the instance of the template.</param>
+		/// <param name="arguments">An array of the encoded arguments to use for template instantiation.</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public void Instantiate(Stream stream, IReadOnlyDictionary<String, Byte[]> encodedArguments)
+		public void Instantiate(Stream stream, IReadOnlyList<String> arguments)
 		{
-			for (var index = 0; index < segments.Length; index++)
+			for (var index = 0; index < Segments.Length; index++)
 			{
-				var segment = segments[index];
+				var segment = Segments[index];
 
-				if (segment.isVariable)
+				if (segment.IsVariable)
 				{
-					Byte[] encodedData;
-
-					if (encodedArguments.TryGetValue(segment.name, out encodedData))
+					// Check
+					if (segment.Index >= arguments.Count)
 					{
-						stream.Write(encodedData, 0, encodedData.Length);
+						continue;
 					}
+
+					// Get argument
+					var argument = arguments[segment.Index];
+
+					// Encode argumnent
+					var encodedArgument = Encoding.GetBytes(argument);
+
+					stream.Write(encodedArgument, 0, encodedArgument.Length);
 				}
 				else
 				{
-					stream.Write(segment.encodedData, 0, segment.encodedData.Length);
+					stream.Write(segment.EncodedData, 0, segment.EncodedData.Length);
 				}
 			}
 		}
 
 		/// <summary>
-		/// Initiates an asynchronous operation to instantiate the template using specified <paramref name="encodedArguments" />.
+		/// Instantiates the template using <paramref name="tryGetValue"/> method.
 		/// </summary>
 		/// <param name="stream">An output stream for the instance of the template.</param>
-		/// <param name="encodedArguments">An array of encoded arguments to use for template instantiation.</param>
-		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
+		/// <param name="tryGetValue">A delegate to the method which tries to get value of the argument by name.</param>
+		/// <returns>A string instance of template.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public async Task InstantiateAsync(Stream stream, IReadOnlyList<Byte[]> encodedArguments)
+		public void Instantiate(Stream stream, TryGetValue tryGetValue)
 		{
-			for (var index = 0; index < segments.Length; index++)
+			for (var index = 0; index < Segments.Length; index++)
 			{
-				var segment = segments[index];
+				var segment = Segments[index];
 
-				if (segment.isVariable)
+				if (segment.IsVariable)
 				{
-					var encodedArgument = encodedArguments[segment.index];
+					// Try get argument
+					String argument;
 
-					await stream.WriteAsync(encodedArgument, 0, encodedArgument.Length);
+					if (!tryGetValue(segment.VariableKey, out argument))
+					{
+						continue;
+					}
+
+					// Encode argumnent
+					var encodedArgument = Encoding.GetBytes(argument);
+
+					stream.Write(encodedArgument, 0, encodedArgument.Length);
 				}
 				else
 				{
-					await stream.WriteAsync(segment.encodedData, 0, segment.encodedData.Length);
+					stream.Write(segment.EncodedData, 0, segment.EncodedData.Length);
 				}
 			}
 		}
 
 		/// <summary>
-		/// Initiates an asynchronous operation to instantiate the template using specified <paramref name="encodedArguments" />.
+		/// Initiates an asynchronous operation to instantiate the template using specified <paramref name="arguments"/>.
 		/// </summary>
 		/// <param name="stream">An output stream for the instance of the template.</param>
-		/// <param name="encodedArguments">A dictionary of the encoded arguments to use for template instantiation.</param>
-		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
+		/// <param name="arguments">An array of encoded arguments to use for template instantiation.</param>
+		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public async Task InstantiateAsync(Stream stream, IReadOnlyDictionary<String, Byte[]> encodedArguments)
+		public Task InstantiateAsync(Stream stream, params String[] arguments)
 		{
-			for (var index = 0; index < segments.Length; index++)
-			{
-				var segment = segments[index];
+			return InstantiateAsync(stream, (IReadOnlyList<String>) arguments);
+		}
 
-				if (segment.isVariable)
+		/// <summary>
+		/// Initiates an asynchronous operation to instantiate the template using specified <paramref name="arguments"/>.
+		/// </summary>
+		/// <param name="stream">An output stream for the instance of the template.</param>
+		/// <param name="arguments">An array of encoded arguments to use for template instantiation.</param>
+		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public async Task InstantiateAsync(Stream stream, IReadOnlyList<String> arguments)
+		{
+			for (var index = 0; index < Segments.Length; index++)
+			{
+				var segment = Segments[index];
+
+				if (segment.IsVariable)
 				{
-					var encodedArgument = encodedArguments[segment.name];
+					// Check
+					if (segment.Index >= arguments.Count)
+					{
+						continue;
+					}
+
+					// Get argument
+					var argument = arguments[segment.Index];
+
+					// Encode argumnent
+					var encodedArgument = Encoding.GetBytes(argument);
 
 					await stream.WriteAsync(encodedArgument, 0, encodedArgument.Length);
 				}
 				else
 				{
-					await stream.WriteAsync(segment.encodedData, 0, segment.encodedData.Length);
+					await stream.WriteAsync(segment.EncodedData, 0, segment.EncodedData.Length);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Initiates an asynchronous operation to instantiate the template using <paramref name="tryGetValue"/> method.
+		/// </summary>
+		/// <param name="stream">An output stream for the instance of the template.</param>
+		/// <param name="tryGetValue">A delegate to the method which tries to get value of the argument by name.</param>
+		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public async Task InstantiateAsync(Stream stream, TryGetValue tryGetValue)
+		{
+			for (var index = 0; index < Segments.Length; index++)
+			{
+				var segment = Segments[index];
+
+				if (segment.IsVariable)
+				{
+					// Try get argument
+					String argument;
+
+					if (!tryGetValue(segment.VariableKey, out argument))
+					{
+						continue;
+					}
+
+					// Encode argumnent
+					var encodedArgument = Encoding.GetBytes(argument);
+
+					stream.Write(encodedArgument, 0, encodedArgument.Length);
+				}
+				else
+				{
+					await stream.WriteAsync(segment.EncodedData, 0, segment.EncodedData.Length);
 				}
 			}
 		}
