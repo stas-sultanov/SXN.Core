@@ -126,6 +126,12 @@ namespace System
 	{
 		#region Nested Types
 
+		/// <summary>
+		/// Represents the method that tries to get <paramref name="value"/> of the variable by <paramref name="key"/>.
+		/// </summary>
+		/// <param name="key">The key of the variable.</param>
+		/// <param name="value">A value of the variable if operation was successful, <c>null</c> otherwise.</param>
+		/// <returns><c>true</c> if operation was successful, <c>false</c> otherwise.</returns>
 		public delegate Boolean TryGetValue(T key, out String value);
 
 		/// <summary>

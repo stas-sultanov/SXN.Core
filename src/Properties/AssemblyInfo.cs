@@ -45,7 +45,7 @@ using System.Runtime.InteropServices;
 // The version number of the assembly.
 // Is managed by the build process.
 
-[assembly: AssemblyVersion("4.4.*")]
+[assembly: AssemblyVersion("255.255.255.255")]
 
 // Indicate that the assembly is not visible to COM
 
