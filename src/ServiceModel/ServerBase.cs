@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace System.ServiceModel
@@ -212,9 +213,10 @@ namespace System.ServiceModel
 		/// <summary>
 		/// Initiates an asynchronous operation to process the requests.
 		/// </summary>
+		/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
 		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public async Task RunAsync()
+		public override async Task RunAsync(CancellationToken cancellationToken)
 		{
 			// Trace diagnostics event
 			TraceEvent(EventLevel.Informational, @"Main cycle started.");
@@ -225,7 +227,7 @@ namespace System.ServiceModel
 				// Try await for the request
 				var awaitResult = await TryAwaitRequestAsync();
 
-				// Check if await operation has successed
+				// Check if await operation has succeeded
 				if (!awaitResult.Success)
 				{
 					continue;

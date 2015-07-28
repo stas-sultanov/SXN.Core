@@ -138,7 +138,7 @@ namespace System.ServiceModel
 
 #pragma warning restore 4014
 
-			await service.RunAsync();
+			await service.RunAsync(cancellationToken);
 
 			await service.DeactivateAsync(cancellationToken);
 		}

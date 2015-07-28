@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace System.ServiceModel
 {
 	/// <summary>
-	/// Represents the contract for classes which handles the requests to the server.
+	/// Represents a contract for classes which handles the requests to the server.
 	/// </summary>
 	public interface IServerRequestHandler : IDisposable
 	{

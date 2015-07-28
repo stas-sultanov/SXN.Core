@@ -11,7 +11,7 @@ namespace System.ServiceModel
 	/// <summary>
 	/// Provides a base class for the workers.
 	/// </summary>
-	public abstract class WorkerBase : DisposableBase
+	public abstract class WorkerBase : DisposableBase, IWorker
 	{
 		#region Constant and Static Fields
 
@@ -93,7 +93,7 @@ namespace System.ServiceModel
 			this.diagnosticsEventHandler = diagnosticsEventHandler;
 
 			// Set name
-			Name = name ?? GetType().Name;
+			Id = name ?? GetType().Name;
 
 			// Set workflow
 			stateWorkflow = workflowExtension == null ? workerWorkflow : workerWorkflow.Concat(workflowExtension);
@@ -118,6 +118,14 @@ namespace System.ServiceModel
 		protected TimeSpan ElapsedTime => stopwatch.Elapsed;
 
 		/// <summary>
+		/// The identifier of the worker.
+		/// </summary>
+		public String Id
+		{
+			get;
+		}
+
+		/// <summary>
 		/// Gets a value which indicates whether current instance is active.
 		/// </summary>
 		public Boolean IsActive
@@ -127,14 +135,6 @@ namespace System.ServiceModel
 			{
 				return State == EntityState.Active;
 			}
-		}
-
-		/// <summary>
-		/// The name of the instance.
-		/// </summary>
-		public String Name
-		{
-			get;
 		}
 
 		/// <summary>
@@ -194,22 +194,7 @@ namespace System.ServiceModel
 
 		#endregion
 
-		#region Private methods
-
-		/// <summary>
-		/// Executes on <see cref="StateChanged"/> event.
-		/// </summary>
-		/// <param name="sender">The reference to the object that raised the event.</param>
-		/// <param name="args">The event data.</param>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private void OnStateChanged(Object sender, ValueChangedEventArgs<EntityState> args)
-		{
-			TraceEvent(EventLevel.Informational, $"State changed from {args.PreviousValue} to {args.CurrentValue}.");
-		}
-
-		#endregion
-
-		#region Methods
+		#region Methods of IWorker
 
 		/// <summary>
 		/// Initiates an asynchronous operation to activate worker.
@@ -289,6 +274,32 @@ namespace System.ServiceModel
 			// Set solid state
 			State = EntityState.Inactive;
 		}
+
+		/// <summary>
+		/// Initiates an asynchronous operation to perform work.
+		/// </summary>
+		/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
+		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		public abstract Task RunAsync(CancellationToken cancellationToken);
+
+		#endregion
+
+		#region Private methods
+
+		/// <summary>
+		/// Executes on <see cref="StateChanged"/> event.
+		/// </summary>
+		/// <param name="sender">The reference to the object that raised the event.</param>
+		/// <param name="args">The event data.</param>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		private void OnStateChanged(Object sender, ValueChangedEventArgs<EntityState> args)
+		{
+			TraceEvent(EventLevel.Informational, $"State changed from {args.PreviousValue} to {args.CurrentValue}.");
+		}
+
+		#endregion
+
+		#region Methods
 
 		/// <summary>
 		/// Initiates an asynchronous operation to perform operations required to activate worker.
