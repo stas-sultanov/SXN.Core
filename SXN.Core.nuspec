@@ -12,9 +12,9 @@
 		<tags>Extensions</tags>
 	</metadata>
 	<files>
-		<file src="bin\SXN.Core.dll" target="lib\net46" />
-		<file src="bin\SXN.Core.xml" target="lib\net46" />
-		<file src="bin\SXN.Core.pdb" target="lib\net46" />
+		<file src="bin\SXN.Core.dll" target="lib\net45" />
+		<file src="bin\SXN.Core.xml" target="lib\net45" />
+		<file src="bin\SXN.Core.pdb" target="lib\net45" />
 		<file src="src\**\*.cs" target="src" />
 	</files>
 </package>

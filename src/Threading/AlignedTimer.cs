@@ -24,12 +24,13 @@ namespace System.Threading
 		/// <summary>
 		/// Initializes a new instance of <see cref="AlignedTimer"/> class.
 		/// </summary>
-		/// <param name="callback">A <see cref="AlignedTimerCallback"/> delegate representing a method to be executed.</param>
+		/// <param name="callback">A <see cref="AlignedTimerCallback"/> delegate to the method to execute.</param>
+		/// <param name="isBlocking">The boolean value that indicates if next schedule is blocked until previous execution has completed.</param>
 		/// <param name="interval">The time interval between invocations of <paramref name="callback"/>.</param>
 		/// <param name="shift">The time shift of the invocation time.</param>
 		/// <exception cref="ArgumentNullException"><paramref name="callback"/> is <c>null</c>.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public AlignedTimer(AlignedTimerCallback callback, TimeUnit interval, TimeSpan shift)
+		public AlignedTimer(AlignedTimerCallback callback, Boolean isBlocking, TimeUnit interval, TimeSpan shift)
 		{
 			if (callback == null)
 			{
@@ -37,6 +38,8 @@ namespace System.Threading
 			}
 
 			this.callback = callback;
+
+			IsBlocking = isBlocking;
 
 			Interval = interval;
 
@@ -81,7 +84,15 @@ namespace System.Threading
 		}
 
 		/// <summary>
-		/// Gets the time interval between invocations of the callback.
+		/// The boolean value that indicates if next schedule is blocked until previous execution has completed.
+		/// </summary>
+		public Boolean IsBlocking
+		{
+			get;
+		}
+
+		/// <summary>
+		/// The time interval between invocations of the callback.
 		/// </summary>
 		public TimeUnit Interval
 		{
@@ -89,7 +100,7 @@ namespace System.Threading
 		}
 
 		/// <summary>
-		/// Gets the time shift of the invocation time.
+		/// The time shift of the invocation time.
 		/// </summary>
 		public TimeSpan Shift
 		{
@@ -133,7 +144,7 @@ namespace System.Threading
 		}
 
 		/// <summary>
-		/// Handles calls from the <see cref="timer"/>.
+		/// Handles the calls from the <see cref="timer"/>.
 		/// </summary>
 		/// <param name="state">An object containing application-specific information relevant to the method invoked by this method, or null.</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -142,14 +153,28 @@ namespace System.Threading
 			// Set fire time
 			var fireTime = nextInvocationTime;
 
-			if (enabled)
+			if (IsBlocking)
 			{
-				// Schedule next execution
-				ScheduleNextInvocation();
-			}
+				// Execute action
+				callback(fireTime);
 
-			// Execute action
-			callback(fireTime);
+				if (enabled)
+				{
+					// Schedule next execution
+					ScheduleNextInvocation();
+				}
+			}
+			else
+			{
+				if (enabled)
+				{
+					// Schedule next execution
+					ScheduleNextInvocation();
+				}
+
+				// Execute action
+				callback(fireTime);
+			}
 		}
 
 		#endregion

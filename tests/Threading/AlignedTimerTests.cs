@@ -13,7 +13,7 @@ namespace System.Threading
 	{
 		#region Constant and Static Fields
 
-		private static readonly AlignedTimer timer = new AlignedTimer(Action, TimeUnit.Second, TimeSpan.Zero);
+		private static readonly AlignedTimer timer = new AlignedTimer(Action, true, TimeUnit.Second, TimeSpan.Zero);
 
 		#endregion
 
