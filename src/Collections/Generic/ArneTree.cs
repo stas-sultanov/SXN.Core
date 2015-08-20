@@ -28,7 +28,7 @@ namespace System.Collections.Generic
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ArneTree{TKey, TValue}"/> class.
+		/// Initializes a new instance of the <see cref="ArneTree{TKey, TValue}" /> class.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public ArneTree()
@@ -60,7 +60,7 @@ namespace System.Collections.Generic
 		/// Adds the specified element into the tree.
 		/// </summary>
 		/// <param name="item">The element to add to the tree.</param>
-		/// <returns><c>true</c> if the element is added to the <see cref="ArneTree{TKey, TValue}"/> object; <c>false</c> if the element is already present.</returns>
+		/// <returns><c>true</c> if the element is added to the <see cref="ArneTree{TKey, TValue}" /> object; <c>false</c> if the element is already present.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Boolean Add(TValue item)
 		{
@@ -118,13 +118,13 @@ namespace System.Collections.Generic
 		}
 
 		/// <summary>
-		/// Tries to get a value associated with the specified <paramref name="key"/>.
+		/// Tries to get a value associated with the specified <paramref name="key" />.
 		/// </summary>
 		/// <param name="key">The key of the value to get.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result"/> contains valid object if operation was successful, <c>default(<typeparamref name="TValue"/>)</c> otherwise.
+		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result" /> contains valid object if operation was successful, <c>default(<typeparamref name="TValue" />)</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public TryResult<TValue> TryGetValue(TKey key)
@@ -208,14 +208,14 @@ namespace System.Collections.Generic
 		}
 
 		/// <summary>
-		/// Tries to get the value associated with the specified <paramref name="key"/>.
+		/// Tries to get the value associated with the specified <paramref name="key" />.
 		/// </summary>
 		/// <param name="node">The root of the sub tree.</param>
 		/// <param name="key">The key of the value to get.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result"/> contains valid object if operation was successful, <c>default(<typeparamref name="TValue"/>)</c> otherwise.
+		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result" /> contains valid object if operation was successful, <c>default(<typeparamref name="TValue" />)</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private static TryResult<TValue> TryGetValue(ArneTreeNode<TKey, TValue> node, TKey key)

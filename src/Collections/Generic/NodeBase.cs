@@ -12,7 +12,7 @@ namespace System.Collections.Generic
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="NodeBase{T}"/> class.
+		/// Initializes a new instance of <see cref="NodeBase{T}" /> class.
 		/// </summary>
 		/// <param name="value">The data to associate with a node.</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]

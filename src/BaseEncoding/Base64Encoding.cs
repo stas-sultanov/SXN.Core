@@ -20,7 +20,7 @@ namespace System
 		private const String mimeAlphabet = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 		/// <summary>
-		/// The padding symbol of <see cref="mimeAlphabet"/>.
+		/// The padding symbol of <see cref="mimeAlphabet" />.
 		/// </summary>
 		private const Char mimePaddingSymbol = '=';
 
@@ -49,7 +49,7 @@ namespace System
 		#region Constructors
 
 		/// <summary>
-		/// Initializes the <see cref="Base64Encoding"/> class.
+		/// Initializes the <see cref="Base64Encoding" /> class.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static Base64Encoding()
@@ -62,12 +62,12 @@ namespace System
 		}
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="Base64Encoding"/> class.
+		/// Initializes a new instance of <see cref="Base64Encoding" /> class.
 		/// </summary>
 		/// <param name="alphabet">The alphabet.</param>
 		/// <param name="paddingSymbol">The padding symbol.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="alphabet"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException">The count of items in the <paramref name="alphabet"/> is not equal to 64.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="alphabet" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException">The count of items in the <paramref name="alphabet" /> is not equal to 64.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Base64Encoding(String alphabet, Char? paddingSymbol = null)
 			: this(alphabet, BuildLookupTable(alphabet), paddingSymbol)
@@ -75,15 +75,15 @@ namespace System
 		}
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="Base64Encoding"/> class.
+		/// Initializes a new instance of <see cref="Base64Encoding" /> class.
 		/// </summary>
 		/// <param name="alphabet">The alphabet.</param>
 		/// <param name="lookupTable">The look-up table.</param>
 		/// <param name="paddingSymbol">The padding symbol.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="alphabet"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException">The count of items in the <paramref name="alphabet"/> is not equal to 64.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="lookupTable"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException">The count of items in the <paramref name="lookupTable"/> is not equal to 128.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="alphabet" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException">The count of items in the <paramref name="alphabet" /> is not equal to 64.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="lookupTable" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException">The count of items in the <paramref name="lookupTable" /> is not equal to 128.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Base64Encoding(String alphabet, Byte[] lookupTable, Char? paddingSymbol)
 			: base(64, alphabet, lookupTable)
@@ -108,12 +108,12 @@ namespace System
 		#region Overrides of BaseEncoding
 
 		/// <summary>
-		/// Decodes the specified string, which encodes binary data with <see cref="BaseEncoding.Alphabet"/>, to an equivalent 8-bit unsigned integer array.
+		/// Decodes the specified string, which encodes binary data with <see cref="BaseEncoding.Alphabet" />, to an equivalent 8-bit unsigned integer array.
 		/// </summary>
 		/// <param name="data">The string to convert.</param>
-		/// <param name="offset">An offset in <paramref name="data"/>.</param>
-		/// <param name="count">The number of elements of <paramref name="data"/> to convert.</param>
-		/// <returns>An array of 8-bit unsigned integers that is equivalent to <paramref name="count"/> elements of <paramref name="data"/>, starting at position <paramref name="offset"/>.</returns>
+		/// <param name="offset">An offset in <paramref name="data" />.</param>
+		/// <param name="count">The number of elements of <paramref name="data" /> to convert.</param>
+		/// <returns>An array of 8-bit unsigned integers that is equivalent to <paramref name="count" /> elements of <paramref name="data" />, starting at position <paramref name="offset" />.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected override Byte[] DecodeInternal(String data, Int32 offset, Int32 count)
 		{
@@ -238,12 +238,12 @@ namespace System
 		}
 
 		/// <summary>
-		/// Encodes an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="BaseEncoding.Alphabet"/>.
+		/// Encodes an array of 8-bit unsigned integers to its equivalent string representation that is encoded with <see cref="BaseEncoding.Alphabet" />.
 		/// </summary>
 		/// <param name="data">An array of 8-bit unsigned integers to convert.</param>
-		/// <param name="offset">An offset in <paramref name="data"/>.</param>
-		/// <param name="count">The number of elements of <paramref name="data"/> to convert.</param>
-		/// <returns>The string representation of <paramref name="count"/> elements of <paramref name="data"/>, starting at position <paramref name="offset"/>.</returns>
+		/// <param name="offset">An offset in <paramref name="data" />.</param>
+		/// <param name="count">The number of elements of <paramref name="data" /> to convert.</param>
+		/// <returns>The string representation of <paramref name="count" /> elements of <paramref name="data" />, starting at position <paramref name="offset" />.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected override String EncodeInternal(Byte[] data, Int32 offset, Int32 count)
 		{

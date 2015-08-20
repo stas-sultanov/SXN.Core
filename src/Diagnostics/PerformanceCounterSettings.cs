@@ -1,14 +1,14 @@
 ﻿namespace System.Diagnostics
 {
 	/// <summary>
-	/// Specifies the configuration settings for the <see cref="PerformanceCounter"/> class.
+	/// Specifies the configuration settings for the <see cref="PerformanceCounter" /> class.
 	/// </summary>
 	public sealed class PerformanceCounterSettings
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="PerformanceCounterSettings"/> class.
+		/// Initializes a new instance of the <see cref="PerformanceCounterSettings" /> class.
 		/// </summary>
 		/// <param name="category">The name of the performance counter category for this performance counter.</param>
 		/// <param name="counterType">The type of the performance counter.</param>

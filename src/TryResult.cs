@@ -11,10 +11,10 @@ namespace System
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="TryResult{T}"/> structure.
+		/// Initializes a new instance of <see cref="TryResult{T}" /> structure.
 		/// </summary>
-		/// <param name="success">A <see cref="Boolean"/> value that indicates whether an operation was successful.</param>
-		/// <param name="result">A valid <typeparamref name="T"/> object if operation was successful.</param>
+		/// <param name="success">A <see cref="Boolean" /> value that indicates whether an operation was successful.</param>
+		/// <param name="result">A valid <typeparamref name="T" /> object if operation was successful.</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private TryResult(Boolean success, T result)
 		{
@@ -31,7 +31,7 @@ namespace System
 		/// Returns a value that indicates whether this instance is equal to a specified object.
 		/// </summary>
 		/// <param name="obj">The object to compare with this instance.</param>
-		/// <returns><c>true</c> if <paramref name="obj"/> is a <see cref="Value128"/> that has the same value as this instance; otherwise, <c>false</c>.</returns>
+		/// <returns><c>true</c> if <paramref name="obj" /> is a <see cref="Value128" /> that has the same value as this instance; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override Boolean Equals(Object obj)
 		{
@@ -57,54 +57,14 @@ namespace System
 		#region Methods of IEquatable<TryResult<T>>
 
 		/// <summary>
-		/// Returns a value indicating whether this instance and a specified <see cref="TryResult{T}"/> represent the same value.
+		/// Returns a value indicating whether this instance and a specified <see cref="TryResult{T}" /> represent the same value.
 		/// </summary>
 		/// <param name="other">An object to compare to this instance.</param>
-		/// <returns><c>true</c> if <paramref name="other"/> is equal to this instance; otherwise, <c>false</c>.</returns>
+		/// <returns><c>true</c> if <paramref name="other" /> is equal to this instance; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Boolean Equals(TryResult<T> other)
 		{
 			return Success.Equals(other.Success) && Result.Equals(other.Result);
-		}
-
-		#endregion
-
-		#region Operators
-
-		/// <summary>
-		/// Indicates whether the values of two specified objects are equal.
-		/// </summary>
-		/// <param name="first">The first object to compare.</param>
-		/// <param name="second">The second object to compare.</param>
-		/// <returns><c>true</c> if <paramref name="first"/> and <paramref name="second"/> are equal; otherwise, <c>false</c>.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Boolean operator ==(TryResult<T> first, TryResult<T> second)
-		{
-			// Return true if the fields match:
-			return first.Equals(second);
-		}
-
-		/// <summary>
-		/// Converts instance of <see cref="TryResult{T}"/> to the instance of <typeparamref name="T"/>.
-		/// </summary>
-		/// <param name="value">The instance of <see cref="TryResult{T}"/> to convert.</param>
-		/// <returns>The instance of <typeparamref name="T"/>.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static implicit operator T(TryResult<T> value)
-		{
-			return value.Result;
-		}
-
-		/// <summary>
-		/// Indicates whether the values of two specified objects are not equal.
-		/// </summary>
-		/// <param name="first">The first object to compare.</param>
-		/// <param name="second">The second object to compare.</param>
-		/// <returns><c>true</c> if <paramref name="first"/> and <paramref name="second"/> are not equal; otherwise, <c>false</c>.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Boolean operator !=(TryResult<T> first, TryResult<T> second)
-		{
-			return !first.Equals(second);
 		}
 
 		#endregion
@@ -114,7 +74,7 @@ namespace System
 		/// <summary>
 		/// Crates a failed result of the operation.
 		/// </summary>
-		/// <param name="result">The default value of the <typeparamref name="T"/>.</param>
+		/// <param name="result">The default value of the <typeparamref name="T" />.</param>
 		/// <returns>The failed result.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static TryResult<T> CreateFail(T result = default(T))
@@ -133,12 +93,48 @@ namespace System
 			return new TryResult<T>(true, result);
 		}
 
+		/// <summary>
+		/// Indicates whether the values of two specified objects are equal.
+		/// </summary>
+		/// <param name="first">The first object to compare.</param>
+		/// <param name="second">The second object to compare.</param>
+		/// <returns><c>true</c> if <paramref name="first" /> and <paramref name="second" /> are equal; otherwise, <c>false</c>.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Boolean operator ==(TryResult<T> first, TryResult<T> second)
+		{
+			// Return true if the fields match:
+			return first.Equals(second);
+		}
+
+		/// <summary>
+		/// Converts instance of <see cref="TryResult{T}" /> to the instance of <typeparamref name="T" />.
+		/// </summary>
+		/// <param name="value">The instance of <see cref="TryResult{T}" /> to convert.</param>
+		/// <returns>The instance of <typeparamref name="T" />.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static implicit operator T(TryResult<T> value)
+		{
+			return value.Result;
+		}
+
+		/// <summary>
+		/// Indicates whether the values of two specified objects are not equal.
+		/// </summary>
+		/// <param name="first">The first object to compare.</param>
+		/// <param name="second">The second object to compare.</param>
+		/// <returns><c>true</c> if <paramref name="first" /> and <paramref name="second" /> are not equal; otherwise, <c>false</c>.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Boolean operator !=(TryResult<T> first, TryResult<T> second)
+		{
+			return !first.Equals(second);
+		}
+
 		#endregion
 
 		#region Implementation of ITryResult<TResult>
 
 		/// <summary>
-		/// Gets an instance of <typeparamref name="T"/> if operation was successful, <c>default</c>(<typeparamref name="T"/>) otherwise.
+		/// Gets an instance of <typeparamref name="T" /> if operation was successful, <c>default</c>(<typeparamref name="T" />) otherwise.
 		/// </summary>
 		public T Result
 		{
@@ -146,7 +142,7 @@ namespace System
 		}
 
 		/// <summary>
-		/// Gets a <see cref="Boolean"/> value that indicates whether an operation was successful.
+		/// Gets a <see cref="Boolean" /> value that indicates whether an operation was successful.
 		/// </summary>
 		public Boolean Success
 		{

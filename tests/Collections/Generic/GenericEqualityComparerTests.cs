@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System.Collections.Generic
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="GenericEqualityComparer{T}"/> class.
+	/// Provides a set of tests for <see cref="GenericEqualityComparer{T}" /> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]

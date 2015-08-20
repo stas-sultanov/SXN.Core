@@ -1,218 +1,218 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<title>Redirect</title>
-	<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"/>
-	<meta http-equiv="refresh" content="2; URL=arg0"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=EDGE"/>
-	<meta name="msapplication-config" content="none"/>
+    <title>Redirect</title>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"/>
+    <meta http-equiv="refresh" content="2; URL=arg0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE"/>
+    <meta name="msapplication-config" content="none"/>
 </head>
 <body style="margin: 0; overflow-y: hidden;">
 <script type="text/javascript">
-	function NavigateToRedirectUrl()
-	{
-		window.location = "arg1";
-	};
+    function NavigateToRedirectUrl()
+    {
+        window.location = "arg1";
+    };
 
-	function CollectData()
-	{
-		// 0. Collect navigator data
-		var nav = {};
-		nav["AppCodeName"] = navigator.appCodeName;
-		nav["AppVersion"] = navigator.appVersion;
-		nav["CookieEnabled"] = navigator.cookieEnabled;
-		nav["JavaEnabled"] = navigator.javaEnabled();
-		nav["Language"] = navigator.language;
-		nav["OnLine"] = navigator.onLine;
-		nav["Platform"] = navigator.platform;
-		nav["Product"] = navigator.product;
+    function CollectData()
+    {
+        // 0. Collect navigator data
+        var nav = {};
+        nav["AppCodeName"] = navigator.appCodeName;
+        nav["AppVersion"] = navigator.appVersion;
+        nav["CookieEnabled"] = navigator.cookieEnabled;
+        nav["JavaEnabled"] = navigator.javaEnabled();
+        nav["Language"] = navigator.language;
+        nav["OnLine"] = navigator.onLine;
+        nav["Platform"] = navigator.platform;
+        nav["Product"] = navigator.product;
 
-		// 1. Collect navigator plugins
-		nav["Plugins"] = [];
+        // 1. Collect navigator plugins
+        nav["Plugins"] = [];
 
-		for (var i = 0; i < navigator.plugins.length; i++)
-		{
-			var plugin = navigator.plugins[i];
+        for (var i = 0; i < navigator.plugins.length; i++)
+        {
+            var plugin = navigator.plugins[i];
 
-			nav["Plugins"].push(plugin.name);
-		}
+            nav["Plugins"].push(plugin.name);
+        }
 
-		// 2. Collect screen properties
-		var scr = {};
-		scr["AvailHeight"] = screen.availHeight;
-		scr["AvailWidth"] = screen.availWidth;
-		scr["ColorDepth"] = screen.colorDepth;
-		scr["Height"] = screen.height;
-		scr["PixelDepth"] = screen.pixelDepth;
-		scr["Width"] = screen.width;
+        // 2. Collect screen properties
+        var scr = {};
+        scr["AvailHeight"] = screen.availHeight;
+        scr["AvailWidth"] = screen.availWidth;
+        scr["ColorDepth"] = screen.colorDepth;
+        scr["Height"] = screen.height;
+        scr["PixelDepth"] = screen.pixelDepth;
+        scr["Width"] = screen.width;
 
-		var webClientId = null;
+        var webClientId = null;
 
-		// 3. Try get web client id
-		try
-		{
-			// Check if HTML5 local storage is supported
-			if ('localStorage' in window && window['localStorage'] !== null)
-			{
-				// Try get stored request id
-				webClientId = localStorage.getItem("WebClientId");
+        // 3. Try get web client id
+        try
+        {
+            // Check if HTML5 local storage is supported
+            if ('localStorage' in window && window['localStorage'] !== null)
+            {
+                // Try get stored request id
+                webClientId = localStorage.getItem("WebClientId");
 
-				if (webClientId == null)
-				{
-					// Put web client id
-					localStorage.setItem("WebClientId", 'arg3');
-				}
-			}
-		}
-		catch (e)
-		{
-		}
+                if (webClientId == null)
+                {
+                    // Put web client id
+                    localStorage.setItem("WebClientId", 'arg3');
+                }
+            }
+        }
+        catch (e)
+        {
+        }
 
-		var result = {};
+        var result = {};
 
-		result["Navigator"] = nav;
-		result["Referer"] = document.referrer == "" ? null : document.referrer;
-		result["Screen"] = scr;
-		result["WebClientId"] = webClientId;
+        result["Navigator"] = nav;
+        result["Referer"] = document.referrer == "" ? null : document.referrer;
+        result["Screen"] = scr;
+        result["WebClientId"] = webClientId;
 
-		// Set time zone as offset in ticks
-		result["TimeZone"] = (new Date).getTimezoneOffset() * 600000000;
+        // Set time zone as offset in ticks
+        result["TimeZone"] = (new Date).getTimezoneOffset() * 600000000;
 
-		return result;
-	};
+        return result;
+    };
 
-	function SendData(data)
-	{
-		// Convert data to JSON
-		var response = JSON.stringify(data);
+    function SendData(data)
+    {
+        // Convert data to JSON
+        var response = JSON.stringify(data);
 
-		// Create HTTP request
-		var httpRequest = new XMLHttpRequest();
+        // Create HTTP request
+        var httpRequest = new XMLHttpRequest();
 
-		// Set web method
-		httpRequest.open("POST", "arg2", true);
+        // Set web method
+        httpRequest.open("POST", "arg2", true);
 
-		// when request finished and response is ready - navigate to RedirectUrl
-		httpRequest.onreadystatechange = function()
-		{
-			if (httpRequest.readyState == 4)
-			{
-				NavigateToRedirectUrl();
-			}
-		}; // Set content type
-		httpRequest.setRequestHeader("Content-Type", "application/json");
+        // when request finished and response is ready - navigate to RedirectUrl
+        httpRequest.onreadystatechange = function()
+        {
+            if (httpRequest.readyState == 4)
+            {
+                NavigateToRedirectUrl();
+            }
+        }; // Set content type
+        httpRequest.setRequestHeader("Content-Type", "application/json");
 
-		// Send response
-		httpRequest.send(response);
-	};
+        // Send response
+        httpRequest.send(response);
+    };
 
-	function CollectSendNavigate()
-	{
-		var data = {};
+    function CollectSendNavigate()
+    {
+        var data = {};
 
-		// Collect data
-		data["WebClient"] = CollectData();
+        // Collect data
+        data["WebClient"] = CollectData();
 
-		// Set redirect method
-		data["RedirectMethod"] = "JavaScript";
+        // Set redirect method
+        data["RedirectMethod"] = "JavaScript";
 
-		// Send data
-		SendData(data);
+        // Send data
+        SendData(data);
 
-		// Navigate to redirect url
-		NavigateToRedirectUrl();
-	};
+        // Navigate to redirect url
+        NavigateToRedirectUrl();
+    };
 
-	var javaScriptIsReady = false;
+    var javaScriptIsReady = false;
 
-	// Called from flash
-	// Gets a value which indicates whether JavaScript is working
-	function GetJavaScriptIsReady()
-	{
-		return javaScriptIsReady;
-	}
+    // Called from flash
+    // Gets a value which indicates whether JavaScript is working
+    function GetJavaScriptIsReady()
+    {
+        return javaScriptIsReady;
+    }
 
-	var flashDataWasSent = false;
+    var flashDataWasSent = false;
 
-	// Called from flash
-	// Sets a value which indicates that data was sent by Flash
-	function SetFlashDataWasSent()
-	{
-		flashDataWasSent = true;
-	};
+    // Called from flash
+    // Sets a value which indicates that data was sent by Flash
+    function SetFlashDataWasSent()
+    {
+        flashDataWasSent = true;
+    };
 
-	function SendDataToFlash()
-	{
-		// Collect data
-		var data = CollectData();
+    function SendDataToFlash()
+    {
+        // Collect data
+        var data = CollectData();
 
-		// Convert data to json
-		var json = JSON.stringify(data);
+        // Convert data to json
+        var json = JSON.stringify(data);
 
-		document.getElementById("sniffer").sendToActionScript(json);
-	};
+        document.getElementById("sniffer").sendToActionScript(json);
+    };
 
-	var intervalId;
+    var intervalId;
 
-	window.onload = function()
-	{
-		javaScriptIsReady = true;
+    window.onload = function()
+    {
+        javaScriptIsReady = true;
 
-		// Check if flash is installed
-		var flashIsInstalled = false;
+        // Check if flash is installed
+        var flashIsInstalled = false;
 
-		try
-		{
-			var isActiveX = new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+        try
+        {
+            var isActiveX = new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
 
-			if (isActiveX)
-			{
-				flashIsInstalled = true;
-			}
-		}
-		catch (e)
-		{
-			if (navigator.mimeTypes
-				&& navigator.mimeTypes["application/x-shockwave-flash"] != undefined
-				&& navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin)
-			{
-				flashIsInstalled = true;
-			}
-		}
+            if (isActiveX)
+            {
+                flashIsInstalled = true;
+            }
+        }
+        catch (e)
+        {
+            if (navigator.mimeTypes
+                && navigator.mimeTypes["application/x-shockwave-flash"] != undefined
+                && navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin)
+            {
+                flashIsInstalled = true;
+            }
+        }
 
-		if (flashIsInstalled == true)
-		{
-			// Wait while flash call SendDataToFlash(data);
-			var cnt = 0;
+        if (flashIsInstalled == true)
+        {
+            // Wait while flash call SendDataToFlash(data);
+            var cnt = 0;
 
-			intervalId = setInterval
-			(
-				function()
-				{
-					if (flashDataWasSent)
-					{
-						clearInterval(intervalId);
-					}
+            intervalId = setInterval
+            (
+                function()
+                {
+                    if (flashDataWasSent)
+                    {
+                        clearInterval(intervalId);
+                    }
 
-					if (cnt > 20)
-					{
-						clearInterval(intervalId);
+                    if (cnt > 20)
+                    {
+                        clearInterval(intervalId);
 
-						CollectSendNavigate();
-					}
-					cnt++;
-				}, 5
-			);
-		}
-		else
-		{
-			CollectSendNavigate();
-		}
-	};
+                        CollectSendNavigate();
+                    }
+                    cnt++;
+                }, 5
+            );
+        }
+        else
+        {
+            CollectSendNavigate();
+        }
+    };
 </script>
 <object id="sniffer" data="http://arg4/movie.swf" type="application/x-shockwave-flash" width="1" height="1" name="sniffer">
-	<param name="movie" value="http://arg4/movie.swf"/><param name="allowscriptaccess" value="always"/>
-	<param name="flashvars" value="r=arg5&amp;p=arg2&amp;i=arg3"/>
+    <param name="movie" value="http://arg4/movie.swf"/><param name="allowscriptaccess" value="always"/>
+    <param name="flashvars" value="r=arg5&amp;p=arg2&amp;i=arg3"/>
 </object>
 </body>
 </html>

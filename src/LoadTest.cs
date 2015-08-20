@@ -21,7 +21,7 @@ namespace System
 			#region Constructors
 
 			/// <summary>
-			/// Initializes a new instance of <see cref="ComparedResults"/> class.
+			/// Initializes a new instance of <see cref="ComparedResults" /> class.
 			/// </summary>
 			/// <param name="firstTestResult">First test run result.</param>
 			/// <param name="secondTestResult">Second test run result.</param>
@@ -122,7 +122,7 @@ namespace System
 			#region Constructors
 
 			/// <summary>
-			/// Initializes a new instance of <see cref="Result"/> class.
+			/// Initializes a new instance of <see cref="Result" /> class.
 			/// </summary>
 			/// <param name="id">Test identifier.</param>
 			/// <param name="iterationCount">A number of times a test was run.</param>
@@ -217,13 +217,13 @@ namespace System
 		#region Methods
 
 		/// <summary>
-		/// Executes <paramref name="action"/> specified by <paramref name="iterationCount"/> number of times in a single task.
+		/// Executes <paramref name="action" /> specified by <paramref name="iterationCount" /> number of times in a single task.
 		/// </summary>
 		/// <param name="testId">Test identifier.</param>
 		/// <param name="action">An action to be executed.</param>
 		/// <param name="iterationCount">A count of times an action will be executed.</param>
 		/// <returns>A result of test execution.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="action"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="action" /> is <c>null</c>.</exception>
 		public static Result Execute(String testId, Action<Int64> action, Int64 iterationCount)
 		{
 			// Check context
@@ -256,8 +256,8 @@ namespace System
 		/// <param name="secondAction">An action of the second test.</param>
 		/// <param name="iterationCount">A count of times an action will be executed.</param>
 		/// <returns>A result of test execution.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="firstAction"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="secondAction"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="firstAction" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="secondAction" /> is <c>null</c>.</exception>
 		public static ComparedResults ExecuteCompare(String firstTestId, Action<Int64> firstAction, String secondTestId, Action<Int64> secondAction, Int64 iterationCount)
 		{
 			// Execute first action
@@ -270,14 +270,14 @@ namespace System
 		}
 
 		/// <summary>
-		/// Asynchronously executes an <paramref name="action"/> specified by <paramref name="iterationCount"/> number of times in a specified by <paramref name="tasksCount"/> number of parallel tasks.
+		/// Asynchronously executes an <paramref name="action" /> specified by <paramref name="iterationCount" /> number of times in a specified by <paramref name="tasksCount" /> number of parallel tasks.
 		/// </summary>
 		/// <param name="testId">Test identifier.</param>
 		/// <param name="action">An action to be executed.</param>
 		/// <param name="iterationCount">A count of times an action will be executed.</param>
-		/// <param name="tasksCount">A number of parallel tasks to execute <paramref name="action"/>.</param>
+		/// <param name="tasksCount">A number of parallel tasks to execute <paramref name="action" />.</param>
 		/// <returns>A result of test execution.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="action"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="action" /> is <c>null</c>.</exception>
 		public static async Task<Result> ExecuteParallelAsync(String testId, Action<Int64> action, Int64 iterationCount, Int64 tasksCount)
 		{
 			if (action == null)
@@ -321,14 +321,14 @@ namespace System
 		}
 
 		/// <summary>
-		/// Asynchronously executes a <paramref name="func"/> specified by <paramref name="iterationCount"/> number of times in a specified by <paramref name="tasksCount"/> number of parallel tasks.
+		/// Asynchronously executes a <paramref name="func" /> specified by <paramref name="iterationCount" /> number of times in a specified by <paramref name="tasksCount" /> number of parallel tasks.
 		/// </summary>
 		/// <param name="testId">Test identifier.</param>
 		/// <param name="func">A function to to be executed.</param>
 		/// <param name="iterationCount">A count of times an action will be executed.</param>
-		/// <param name="tasksCount">A number of parallel tasks to execute <paramref name="func"/>.</param>
+		/// <param name="tasksCount">A number of parallel tasks to execute <paramref name="func" />.</param>
 		/// <returns>A result of test execution.</returns>
-		/// <exception cref="ArgumentNullException"><paramref name="func"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="func" /> is <c>null</c>.</exception>
 		public static async Task<Result> ExecuteParallelAsync(String testId, Func<Int64, Task> func, Int64 iterationCount, Int64 tasksCount)
 		{
 			if (func == null)

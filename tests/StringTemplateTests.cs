@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="StringTemplate{T}"/> class.
+	/// Provides a set of tests for <see cref="StringTemplate{T}" /> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]
@@ -90,7 +90,7 @@ namespace System
 		#region Constructor
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="StringTemplateTests"/> class.
+		/// Initializes a new instance of <see cref="StringTemplateTests" /> class.
 		/// </summary>
 		public StringTemplateTests()
 		{

@@ -34,7 +34,7 @@ namespace System.Threading.Tasks
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="SequentialExecutor"/> class.
+		/// Initializes a new instance of <see cref="SequentialExecutor" /> class.
 		/// </summary>
 		public SequentialExecutor()
 		{
@@ -68,7 +68,7 @@ namespace System.Threading.Tasks
 		/// <summary>
 		/// Initiates an asynchronous operation to execute a sequence of functions from the work queue.
 		/// </summary>
-		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private async Task RunAsync()
 		{
@@ -94,7 +94,7 @@ namespace System.Threading.Tasks
 		#region Methods
 
 		/// <summary>
-		/// Enqueues the <paramref name="function"/> to run sequentially.
+		/// Enqueues the <paramref name="function" /> to run sequentially.
 		/// </summary>
 		/// <param name="function">The work to execute sequentially.</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -125,7 +125,7 @@ namespace System.Threading.Tasks
 		/// <summary>
 		/// Gets an awaiter used to await current instance.
 		/// </summary>
-		/// <returns>An instance of <see cref="TaskAwaiter"/>.</returns>
+		/// <returns>An instance of <see cref="TaskAwaiter" />.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public TaskAwaiter GetAwaiter()
 		{
@@ -133,9 +133,9 @@ namespace System.Threading.Tasks
 		}
 
 		/// <summary>
-		/// Waits for the <see cref="SequentialExecutor"/> to complete execution.
+		/// Waits for the <see cref="SequentialExecutor" /> to complete execution.
 		/// </summary>
-		/// <exception cref="T:System.AggregateException"> The <see cref="Task"/> was canceled -or- an exception was thrown during the execution of the <see cref="Task"/>.</exception>
+		/// <exception cref="T:System.AggregateException"> The <see cref="Task" /> was canceled -or- an exception was thrown during the execution of the <see cref="Task" />.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Wait()
 		{

@@ -17,7 +17,7 @@ namespace System.ServiceModel
 		#region Constant and Static Fields
 
 		/// <summary>
-		/// The default result of the <see cref="TryAwaitRequestAsync"/> operation.
+		/// The default result of the <see cref="TryAwaitRequestAsync" /> operation.
 		/// </summary>
 		protected static readonly TryResult<IServerRequestHandler> TryAwaitRequestFailResult = new TryResult<IServerRequestHandler>();
 
@@ -31,27 +31,27 @@ namespace System.ServiceModel
 		private readonly LinkedList<KeyValuePair<Task<Boolean>, IServerRequestHandler>> activeTasks;
 
 		/// <summary>
-		/// The instance of <see cref="PerformanceCounter"/> which measures the count of active tasks.
+		/// The instance of <see cref="PerformanceCounter" /> which measures the count of active tasks.
 		/// </summary>
 		private readonly PerformanceCounter activeTasksCounter;
 
 		/// <summary>
-		/// The instance of <see cref="PerformanceCounter"/> which measures the count of bad requests per second.
+		/// The instance of <see cref="PerformanceCounter" /> which measures the count of bad requests per second.
 		/// </summary>
 		private readonly PerformanceCounter badRequestsPerSecondCounter;
 
 		/// <summary>
-		/// The instance of <see cref="PerformanceCounter"/> which measures the average time base to process the requests.
+		/// The instance of <see cref="PerformanceCounter" /> which measures the average time base to process the requests.
 		/// </summary>
 		private readonly PerformanceCounter requestProcessingAverageBaseCounter;
 
 		/// <summary>
-		/// The instance of <see cref="PerformanceCounter"/> which measures the average time to process the requests.
+		/// The instance of <see cref="PerformanceCounter" /> which measures the average time to process the requests.
 		/// </summary>
 		private readonly PerformanceCounter requestProcessingAverageTimeCounter;
 
 		/// <summary>
-		/// The instance of <see cref="PerformanceCounter"/> which measures the count of requests per second.
+		/// The instance of <see cref="PerformanceCounter" /> which measures the count of requests per second.
 		/// </summary>
 		private readonly PerformanceCounter requestsPerSecondCounter;
 
@@ -60,14 +60,14 @@ namespace System.ServiceModel
 		#region Constructors
 
 		/// <summary>
-		/// Initialize a new instance of <see cref="ServerBase"/> class.
+		/// Initialize a new instance of <see cref="ServerBase" /> class.
 		/// </summary>
 		/// <param name="diagnosticsEventHandler">A delegate to the method that will handle the diagnostics events.</param>
 		/// <param name="settings">A server configuration settings.</param>
-		/// <remarks>Constructor of the final class must set <see cref="WorkerBase.State"/> to the <see cref="EntityState.Inactive"/> state.</remarks>
-		/// <exception cref="ArgumentNullException"><paramref name="diagnosticsEventHandler"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException"><paramref name="settings"/> is <c>null</c> or is not valid.</exception>
-		/// <exception cref="KeyNotFoundException"><paramref name="settings"/> does not contains the required performance counter configuration.</exception>
+		/// <remarks>Constructor of the final class must set <see cref="WorkerBase.State" /> to the <see cref="EntityState.Inactive" /> state.</remarks>
+		/// <exception cref="ArgumentNullException"><paramref name="diagnosticsEventHandler" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException"><paramref name="settings" /> is <c>null</c> or is not valid.</exception>
+		/// <exception cref="KeyNotFoundException"><paramref name="settings" /> does not contains the required performance counter configuration.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected internal ServerBase(EventHandler<DiagnosticsEventArgs> diagnosticsEventHandler, ServerSettings settings)
 			: base(diagnosticsEventHandler, settings?.Name)
@@ -142,6 +142,64 @@ namespace System.ServiceModel
 			}
 		}
 
+		/// <summary>
+		/// Initiates an asynchronous operation to process the requests.
+		/// </summary>
+		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
+		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public override async Task RunAsync(CancellationToken cancellationToken)
+		{
+			// Trace diagnostics event
+			TraceEvent(EventLevel.Informational, @"Main cycle started.");
+
+			// While service is active
+			while (IsActive)
+			{
+				// Try await for the request
+				var awaitResult = await TryAwaitRequestAsync();
+
+				// Check if await operation has succeeded
+				if (!awaitResult.Success)
+				{
+					continue;
+				}
+
+				// Get handler
+				var handler = awaitResult.Result;
+
+				// Start a new task
+				var task = awaitResult.Result.TryProcessAsync();
+
+				// Add task to the collection of active tasks
+				activeTasks.AddLast(new KeyValuePair<Task<Boolean>, IServerRequestHandler>(task, handler));
+
+				// Increment requests counter
+				requestsPerSecondCounter.Increment();
+
+				// Update tasks counter
+				activeTasksCounter.Increment();
+
+				// Finalize completed requests
+				activeTasks.Remove(FinalizeRequestIfCompleted);
+			}
+
+			// Trace diagnostics event
+			TraceEvent(EventLevel.Informational, @"Main cycle stopped.");
+
+			// Check if there are unfinished tasks
+			if (activeTasks.Count == 0)
+			{
+				return;
+			}
+
+			// Wait for all active tasks to complete
+			await Task.WhenAll(activeTasks.Select(pair => pair.Key));
+
+			// Finalize all completed requests
+			activeTasks.Remove(FinalizeRequestIfCompleted);
+		}
+
 		#endregion
 
 		#region Private methods
@@ -211,69 +269,11 @@ namespace System.ServiceModel
 		#region Methods
 
 		/// <summary>
-		/// Initiates an asynchronous operation to process the requests.
-		/// </summary>
-		/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
-		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public override async Task RunAsync(CancellationToken cancellationToken)
-		{
-			// Trace diagnostics event
-			TraceEvent(EventLevel.Informational, @"Main cycle started.");
-
-			// While service is active
-			while (IsActive)
-			{
-				// Try await for the request
-				var awaitResult = await TryAwaitRequestAsync();
-
-				// Check if await operation has succeeded
-				if (!awaitResult.Success)
-				{
-					continue;
-				}
-
-				// Get handler
-				var handler = awaitResult.Result;
-
-				// Start a new task
-				var task = awaitResult.Result.TryProcessAsync();
-
-				// Add task to the collection of active tasks
-				activeTasks.AddLast(new KeyValuePair<Task<Boolean>, IServerRequestHandler>(task, handler));
-
-				// Increment requests counter
-				requestsPerSecondCounter.Increment();
-
-				// Update tasks counter
-				activeTasksCounter.Increment();
-
-				// Finalize completed requests
-				activeTasks.Remove(FinalizeRequestIfCompleted);
-			}
-
-			// Trace diagnostics event
-			TraceEvent(EventLevel.Informational, @"Main cycle stopped.");
-
-			// Check if there are unfinished tasks
-			if (activeTasks.Count == 0)
-			{
-				return;
-			}
-
-			// Wait for all active tasks to complete
-			await Task.WhenAll(activeTasks.Select(pair => pair.Key));
-
-			// Finalize all completed requests
-			activeTasks.Remove(FinalizeRequestIfCompleted);
-		}
-
-		/// <summary>
 		/// Initiates an asynchronous operation to try await the request.
 		/// </summary>
 		/// <returns>
-		/// A <see cref="Task{TResult}"/> object of type <see cref="IServerRequestHandler"/> that represents the asynchronous operation.
-		/// <see cref="Task{TResult}.Result"/> refers to the instance of <see cref="IServerRequestHandler"/> if operation was successful, <c>null</c> otherwise.
+		/// A <see cref="Task{TResult}" /> object of type <see cref="IServerRequestHandler" /> that represents the asynchronous operation.
+		/// <see cref="Task{TResult}.Result" /> refers to the instance of <see cref="IServerRequestHandler" /> if operation was successful, <c>null</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected abstract Task<TryResult<IServerRequestHandler>> TryAwaitRequestAsync();

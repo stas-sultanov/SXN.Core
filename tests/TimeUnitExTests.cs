@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="TimeUnitEx"/> class.
+	/// Provides a set of tests for <see cref="TimeUnitEx" /> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]
@@ -14,7 +14,6 @@ namespace System
 
 		private static readonly Tuple<TimeUnit, TryResult<TimeUnit>>[] tryGetNextSamples =
 		{
-			Tuple.Create(TimeUnit.Microsecond, TryResult<TimeUnit>.CreateSuccess(TimeUnit.Millisecond)),
 			Tuple.Create(TimeUnit.Millisecond, TryResult<TimeUnit>.CreateSuccess(TimeUnit.Second)),
 			Tuple.Create(TimeUnit.Second, TryResult<TimeUnit>.CreateSuccess(TimeUnit.Minute)),
 			Tuple.Create(TimeUnit.Minute, TryResult<TimeUnit>.CreateSuccess(TimeUnit.Hour)),
@@ -28,8 +27,7 @@ namespace System
 			Tuple.Create(TimeUnit.Hour, TryResult<TimeUnit>.CreateSuccess(TimeUnit.Minute)),
 			Tuple.Create(TimeUnit.Minute, TryResult<TimeUnit>.CreateSuccess(TimeUnit.Second)),
 			Tuple.Create(TimeUnit.Second, TryResult<TimeUnit>.CreateSuccess(TimeUnit.Millisecond)),
-			Tuple.Create(TimeUnit.Millisecond, TryResult<TimeUnit>.CreateSuccess(TimeUnit.Microsecond)),
-			Tuple.Create(TimeUnit.Microsecond, TryResult<TimeUnit>.CreateFail())
+			Tuple.Create(TimeUnit.Millisecond, TryResult<TimeUnit>.CreateFail()),
 		};
 
 		#endregion

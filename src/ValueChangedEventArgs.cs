@@ -8,7 +8,7 @@
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="ValueChangedEventArgs{T}"/> class.
+		/// Initializes a new instance of <see cref="ValueChangedEventArgs{T}" /> class.
 		/// </summary>
 		public ValueChangedEventArgs(T previousValue, T currentValue)
 		{

@@ -8,7 +8,7 @@
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="DiagnosticsEventArgs"/> class.
+		/// Initializes a new instance of <see cref="DiagnosticsEventArgs" /> class.
 		/// </summary>
 		/// <param name="level">The level of the event.</param>
 		/// <param name="message">The message of the event.</param>

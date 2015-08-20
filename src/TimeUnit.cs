@@ -11,11 +11,6 @@
 		None = 0L,
 
 		/// <summary>
-		/// The microsecond.
-		/// </summary>
-		Microsecond = 10L,
-
-		/// <summary>
 		/// The millisecond.
 		/// </summary>
 		Millisecond = 10000L,

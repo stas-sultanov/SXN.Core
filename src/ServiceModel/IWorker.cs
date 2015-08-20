@@ -11,17 +11,17 @@ namespace System.ServiceModel
 		#region Properties
 
 		/// <summary>
-		/// The boolean value which indicates whether current instance is active.
+		/// The identifier of the worker.
 		/// </summary>
-		Boolean IsActive
+		String Id
 		{
 			get;
 		}
 
 		/// <summary>
-		/// The identifier of the worker.
+		/// The boolean value which indicates whether current instance is active.
 		/// </summary>
-		String Id
+		Boolean IsActive
 		{
 			get;
 		}
@@ -33,25 +33,25 @@ namespace System.ServiceModel
 		/// <summary>
 		/// Initiates an asynchronous operation to activate worker.
 		/// </summary>
-		/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
+		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
 		/// <returns>
-		/// A <see cref="Task{TResult}"/> object of type <see cref="Boolean"/>> that represents the asynchronous operation.
-		/// <see cref="Task{TResult}.Result"/> equals <c>true</c> if operation has completed successfully, <c>false</c> otherwise.
+		/// A <see cref="Task{TResult}" /> object of type <see cref="Boolean" />> that represents the asynchronous operation.
+		/// <see cref="Task{TResult}.Result" /> equals <c>true</c> if operation has completed successfully, <c>false</c> otherwise.
 		/// </returns>
 		Task<Boolean> ActivateAsync(CancellationToken cancellationToken);
 
 		/// <summary>
 		/// Initiates an asynchronous operation to deactivate worker.
 		/// </summary>
-		/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
-		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
+		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
 		Task DeactivateAsync(CancellationToken cancellationToken);
 
 		/// <summary>
 		/// Initiates an asynchronous operation to perform work.
 		/// </summary>
-		/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
-		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
+		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
 		Task RunAsync(CancellationToken cancellationToken);
 
 		#endregion

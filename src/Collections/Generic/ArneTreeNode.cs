@@ -28,7 +28,7 @@ namespace System.Collections.Generic
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ArneTreeNode{TValue, TKey}"/> class.
+		/// Initializes a new instance of the <see cref="ArneTreeNode{TValue, TKey}" /> class.
 		/// </summary>
 		/// <param name="value">The data of the node.</param>
 		/// <param name="level">The level in the tree.</param>
@@ -46,7 +46,7 @@ namespace System.Collections.Generic
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ArneTreeNode{TValue, TKey}"/> class.
+		/// Initializes a new instance of the <see cref="ArneTreeNode{TValue, TKey}" /> class.
 		/// </summary>
 		/// <param name="value">The data of the node.</param>
 		/// <param name="level">The level in the tree.</param>
@@ -66,7 +66,7 @@ namespace System.Collections.Generic
 		#region Properties
 
 		/// <summary>
-		/// Gets a <see cref="Boolean"/> value that indicates whether node is leaf.
+		/// Gets a <see cref="Boolean" /> value that indicates whether node is leaf.
 		/// </summary>
 		internal Boolean IsLeaf
 		{
@@ -78,7 +78,7 @@ namespace System.Collections.Generic
 		}
 
 		/// <summary>
-		/// Gets a <see cref="Boolean"/> value that indicates whether node is root.
+		/// Gets a <see cref="Boolean" /> value that indicates whether node is root.
 		/// </summary>
 		internal Boolean IsRoot
 		{

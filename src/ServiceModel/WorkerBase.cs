@@ -74,13 +74,13 @@ namespace System.ServiceModel
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="WorkerBase"/> class.
+		/// Initializes a new instance of <see cref="WorkerBase" /> class.
 		/// </summary>
 		/// <param name="diagnosticsEventHandler">A delegate to the method that will handle the diagnostics events.</param>
 		/// <param name="name">The name of the instance.</param>
 		/// <param name="workflowExtension">The extension of the workflow.</param>
-		/// <remarks>Constructor of the final class must set <see cref="State"/> to the <see cref="EntityState.Inactive"/> state.</remarks>
-		/// <exception cref="ArgumentNullException"><paramref name="diagnosticsEventHandler"/> is <c>null</c>.</exception>
+		/// <remarks>Constructor of the final class must set <see cref="State" /> to the <see cref="EntityState.Inactive" /> state.</remarks>
+		/// <exception cref="ArgumentNullException"><paramref name="diagnosticsEventHandler" /> is <c>null</c>.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected WorkerBase(EventHandler<DiagnosticsEventArgs> diagnosticsEventHandler, String name = null, IEnumerable<EntityStateTransition> workflowExtension = null)
 		{
@@ -199,11 +199,11 @@ namespace System.ServiceModel
 		/// <summary>
 		/// Initiates an asynchronous operation to activate worker.
 		/// </summary>
-		/// <remarks>Requires worker to be in <see cref="EntityState.Inactive"/> state.</remarks>
-		/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
+		/// <remarks>Requires worker to be in <see cref="EntityState.Inactive" /> state.</remarks>
+		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
 		/// <returns>
-		/// A <see cref="Task{TResult}"/> object of type <see cref="Boolean"/>> that represents the asynchronous operation.
-		/// <see cref="Task{TResult}.Result"/> equals <c>true</c> if operation has completed successfully, <c>false</c> otherwise.
+		/// A <see cref="Task{TResult}" /> object of type <see cref="Boolean" />> that represents the asynchronous operation.
+		/// <see cref="Task{TResult}.Result" /> equals <c>true</c> if operation has completed successfully, <c>false</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public async Task<Boolean> ActivateAsync(CancellationToken cancellationToken)
@@ -245,9 +245,9 @@ namespace System.ServiceModel
 		/// <summary>
 		/// Initiates an asynchronous operation to deactivate worker.
 		/// </summary>
-		/// <remarks>Requires worker to be in <see cref="EntityState.Active"/> state.</remarks>
-		/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
-		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		/// <remarks>Requires worker to be in <see cref="EntityState.Active" /> state.</remarks>
+		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
+		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public async Task DeactivateAsync(CancellationToken cancellationToken)
 		{
@@ -278,8 +278,8 @@ namespace System.ServiceModel
 		/// <summary>
 		/// Initiates an asynchronous operation to perform work.
 		/// </summary>
-		/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
-		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
+		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
 		public abstract Task RunAsync(CancellationToken cancellationToken);
 
 		#endregion
@@ -287,7 +287,7 @@ namespace System.ServiceModel
 		#region Private methods
 
 		/// <summary>
-		/// Executes on <see cref="StateChanged"/> event.
+		/// Executes on <see cref="StateChanged" /> event.
 		/// </summary>
 		/// <param name="sender">The reference to the object that raised the event.</param>
 		/// <param name="args">The event data.</param>
@@ -304,11 +304,11 @@ namespace System.ServiceModel
 		/// <summary>
 		/// Initiates an asynchronous operation to perform operations required to activate worker.
 		/// </summary>
-		/// <remarks>Executes when <see cref="ActivateAsync"/> method is called</remarks>
-		/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
+		/// <remarks>Executes when <see cref="ActivateAsync" /> method is called</remarks>
+		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
 		/// <returns>
-		/// A <see cref="Task{TResult}"/> object of type <see cref="Boolean"/>> that represents the asynchronous operation.
-		/// <see cref="Task{TResult}.Result"/> equals <c>true</c> if operation has completed successfully, <c>false</c> otherwise.
+		/// A <see cref="Task{TResult}" /> object of type <see cref="Boolean" />> that represents the asynchronous operation.
+		/// <see cref="Task{TResult}.Result" /> equals <c>true</c> if operation has completed successfully, <c>false</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected abstract Task<Boolean> OnActivatingAsync(CancellationToken cancellationToken);
@@ -316,9 +316,9 @@ namespace System.ServiceModel
 		/// <summary>
 		/// Initiates an asynchronous operation to perform operations required to deactivate worker.
 		/// </summary>
-		/// <remarks>Executes when <see cref="DeactivateAsync"/> method is called</remarks>
-		/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
-		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		/// <remarks>Executes when <see cref="DeactivateAsync" /> method is called</remarks>
+		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
+		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected abstract Task OnDeactivatingAsync(CancellationToken cancellationToken);
 

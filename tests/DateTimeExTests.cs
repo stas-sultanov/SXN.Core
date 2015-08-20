@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="DateTimeEx"/> class.
+	/// Provides a set of tests for <see cref="DateTimeEx" /> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]
@@ -256,14 +256,14 @@ namespace System
 
 			var units = new[]
 			{
-				TimeUnit.Microsecond, TimeUnit.Millisecond, TimeUnit.Second, TimeUnit.Minute, TimeUnit.Hour, TimeUnit.Day
+				TimeUnit.Millisecond, TimeUnit.Second, TimeUnit.Minute, TimeUnit.Hour, TimeUnit.Day
 			};
 
 			foreach (var unit in units)
 			{
-				Assert.IsTrue(testTrueTime.IsLastTimeInterval(unit));
+				Assert.IsTrue(testTrueTime.IsLast(unit));
 
-				Assert.IsFalse(testFalseTime.IsLastTimeInterval(unit));
+				Assert.IsFalse(testFalseTime.IsLast(unit));
 			}
 		}
 

@@ -3,7 +3,7 @@
 namespace System
 {
 	/// <summary>
-	/// Provides a set of extension methods for the <see cref="DateTime"/> structure.
+	/// Provides a set of extension methods for the <see cref="DateTime" /> structure.
 	/// </summary>
 	public static class DateTimeEx
 	{
@@ -19,11 +19,11 @@ namespace System
 		#region Methods
 
 		/// <summary>
-		/// Adds <paramref name="timeInterval"/> to the <paramref name="value"/>.
+		/// Adds <paramref name="timeInterval" /> to the <paramref name="value" />.
 		/// </summary>
-		/// <param name="value">The instance of <see cref="DateTime"/>.</param>
+		/// <param name="value">The instance of <see cref="DateTime" />.</param>
 		/// <param name="timeInterval">The time interval.</param>
-		/// <returns>The new instance of <see cref="DateTime"/> with <paramref name="timeInterval"/> added.</returns>
+		/// <returns>The new instance of <see cref="DateTime" /> with <paramref name="timeInterval" /> added.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static DateTime Add(this DateTime value, TimeInterval timeInterval)
 		{
@@ -31,11 +31,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Adds <paramref name="timeUnit"/> to the <paramref name="value"/>.
+		/// Adds <paramref name="timeUnit" /> to the <paramref name="value" />.
 		/// </summary>
-		/// <param name="value">The instance of <see cref="DateTime"/>.</param>
-		/// <param name="timeUnit">A time interval.</param>
-		/// <returns>The new instance of <see cref="DateTime"/> with <paramref name="timeUnit"/> added.</returns>
+		/// <param name="value">The instance of <see cref="DateTime" />.</param>
+		/// <param name="timeUnit">The time unit.</param>
+		/// <returns>The new instance of <see cref="DateTime" /> with <paramref name="timeUnit" /> added.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static DateTime Add(this DateTime value, TimeUnit timeUnit)
 		{
@@ -43,11 +43,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Returns the smallest <see cref="DateTime"/> value that is greater than or equal to the specified <paramref name="value"/> within the specified <paramref name="timeUnit"/>.
+		/// Returns the smallest <see cref="DateTime" /> value that is greater than or equal to the specified <paramref name="value" /> within the specified <paramref name="timeUnit" />.
 		/// </summary>
-		/// <param name="value">The instance of <see cref="DateTime"/>.</param>
-		/// <param name="timeUnit">A unit of time.</param>
-		/// <returns>The smallest <see cref="DateTime"/> value that is greater than or equal to the specified <paramref name="value"/> within the specified <paramref name="timeUnit"/>.</returns>
+		/// <param name="value">The instance of <see cref="DateTime" />.</param>
+		/// <param name="timeUnit">The time unit.</param>
+		/// <returns>The smallest <see cref="DateTime" /> value that is greater than or equal to the specified <paramref name="value" /> within the specified <paramref name="timeUnit" />.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static DateTime Ceiling(this DateTime value, TimeUnit timeUnit)
 		{
@@ -63,11 +63,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Returns the largest <see cref="DateTime"/> that less than or equal to the specified <paramref name="value"/> within the specified <paramref name="timeUnit"/>.
+		/// Returns the largest <see cref="DateTime" /> that less than or equal to the specified <paramref name="value" /> within the specified <paramref name="timeUnit" />.
 		/// </summary>
-		/// <param name="value">The instance of <see cref="DateTime"/>.</param>
-		/// <param name="timeUnit">A unit of time.</param>
-		/// <returns>The largest <see cref="DateTime"/> that less than or equal to the specified <paramref name="value"/> within the specified <paramref name="timeUnit"/>.</returns>
+		/// <param name="value">The instance of <see cref="DateTime" />.</param>
+		/// <param name="timeUnit">The time unit.</param>
+		/// <returns>The largest <see cref="DateTime" /> that less than or equal to the specified <paramref name="value" /> within the specified <paramref name="timeUnit" />.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static DateTime Floor(this DateTime value, TimeUnit timeUnit)
 		{
@@ -83,20 +83,54 @@ namespace System
 		}
 
 		/// <summary>
-		/// Gets a <see cref="Boolean"/> value which specifies whether <paramref name="value"/> specifies last time interval.
+		/// Gets the value of the time unit of this instance.
 		/// </summary>
-		/// <param name="value">The instance of <see cref="DateTime"/>.</param>
-		/// <param name="timeUnit">A unit of time.</param>
-		/// <returns><c>true</c> if time unit is last, <c>false</c> otherwise.</returns>
+		/// <param name="value">The instance of <see cref="DateTime" />.</param>
+		/// <param name="timeUnit">The time unit.</param>
+		/// <returns>The value of the time unit.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Boolean IsLastTimeInterval(this DateTime value, TimeUnit timeUnit)
+		public static Int32 GetUnitValue(this DateTime value, TimeUnit timeUnit)
 		{
 			switch (timeUnit)
 			{
-				case TimeUnit.Microsecond:
+				case TimeUnit.Millisecond:
 				{
-					return value.Ticks % 10 == 9;
+					return value.Millisecond;
 				}
+				case TimeUnit.Second:
+				{
+					return value.Second;
+				}
+				case TimeUnit.Minute:
+				{
+					return value.Minute;
+				}
+				case TimeUnit.Hour:
+				{
+					return value.Hour;
+				}
+				case TimeUnit.Day:
+				{
+					return value.Day;
+				}
+				default:
+				{
+					return 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets a <see cref="Boolean" /> value which specifies whether <paramref name="value" /> specifies the last time interval.
+		/// </summary>
+		/// <param name="value">The instance of <see cref="DateTime" />.</param>
+		/// <param name="timeUnit">The time unit.</param>
+		/// <returns><c>true</c> if time unit is last, <c>false</c> otherwise.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Boolean IsLast(this DateTime value, TimeUnit timeUnit)
+		{
+			switch (timeUnit)
+			{
 				case TimeUnit.Millisecond:
 				{
 					return value.Millisecond == 999;
@@ -123,11 +157,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Gets a <see cref="Boolean"/> value which indicates whether <paramref name="value"/> is multiple of the <paramref name="timeUnit"/>.
+		/// Gets a <see cref="Boolean" /> value which indicates whether <paramref name="value" /> is multiple of the <paramref name="timeUnit" />.
 		/// </summary>
-		/// <param name="value">The instance of <see cref="DateTime"/>.</param>
+		/// <param name="value">The instance of <see cref="DateTime" />.</param>
 		/// <param name="timeUnit">The time unit.</param>
-		/// <returns><c>true</c> if <paramref name="value"/> is multiple of the <paramref name="timeUnit"/>, <c>false</c> otherwise.</returns>
+		/// <returns><c>true</c> if <paramref name="value" /> is multiple of the <paramref name="timeUnit" />, <c>false</c> otherwise.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Boolean IsMultipleOf(this DateTime value, TimeUnit timeUnit)
 		{
@@ -135,11 +169,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Subtracts <paramref name="timeInterval"/> from the <paramref name="value"/>.
+		/// Subtracts <paramref name="timeInterval" /> from the <paramref name="value" />.
 		/// </summary>
-		/// <param name="value">The instance of <see cref="DateTime"/>.</param>
+		/// <param name="value">The instance of <see cref="DateTime" />.</param>
 		/// <param name="timeInterval">The time interval.</param>
-		/// <returns>The new instance of <see cref="DateTime"/> with <paramref name="timeInterval"/> subtracted.</returns>
+		/// <returns>The new instance of <see cref="DateTime" /> with <paramref name="timeInterval" /> subtracted.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static DateTime Subtract(this DateTime value, TimeInterval timeInterval)
 		{
@@ -147,11 +181,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Subtracts <paramref name="timeUnit"/> from the <paramref name="value"/>.
+		/// Subtracts <paramref name="timeUnit" /> from the <paramref name="value" />.
 		/// </summary>
-		/// <param name="value">The instance of <see cref="DateTime"/>.</param>
-		/// <param name="timeUnit">A time interval.</param>
-		/// <returns>The new instance of <see cref="DateTime"/> with <paramref name="timeUnit"/> subtracted.</returns>
+		/// <param name="value">The instance of <see cref="DateTime" />.</param>
+		/// <param name="timeUnit">The time unit.</param>
+		/// <returns>The new instance of <see cref="DateTime" /> with <paramref name="timeUnit" /> subtracted.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static DateTime Subtract(this DateTime value, TimeUnit timeUnit)
 		{
@@ -159,10 +193,10 @@ namespace System
 		}
 
 		/// <summary>
-		/// Converts an instance of <see cref="DateTime"/> structure to the UNIX time format.
+		/// Converts an instance of <see cref="DateTime" /> structure to the UNIX time format.
 		/// </summary>
-		/// <param name="value">The instance of <see cref="DateTime"/> structure to be converted.</param>
-		/// <returns>The UNIX representation of the time specified by the <paramref name="value"/>.</returns>
+		/// <param name="value">The instance of <see cref="DateTime" /> structure to be converted.</param>
+		/// <returns>The UNIX representation of the time specified by the <paramref name="value" />.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Int64 ToUnixTime(this DateTime value)
 		{

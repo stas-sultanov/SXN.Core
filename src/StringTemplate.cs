@@ -16,14 +16,14 @@ namespace System
 		#region Methods
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="StringTemplate{T}"/> class.
+		/// Initializes a new instance of <see cref="StringTemplate{T}" /> class.
 		/// </summary>
-		/// <param name="encoding">The <see cref="Encoding"/> which is used for the template instantiation.</param>
+		/// <param name="encoding">The <see cref="Encoding" /> which is used for the template instantiation.</param>
 		/// <param name="template">The string template.</param>
 		/// <param name="variables">The collection of the variables within the template.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="encoding"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="template"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException"><paramref name="template"/> is empty.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="encoding" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="template" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException"><paramref name="template" /> is empty.</exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static StringTemplate<String> Initialize(Encoding encoding, String template, params String[] variables)
 		{
@@ -31,14 +31,14 @@ namespace System
 		}
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="StringTemplate{T}"/> class.
+		/// Initializes a new instance of <see cref="StringTemplate{T}" /> class.
 		/// </summary>
-		/// <param name="encoding">The <see cref="Encoding"/> which is used for the template instantiation.</param>
+		/// <param name="encoding">The <see cref="Encoding" /> which is used for the template instantiation.</param>
 		/// <param name="template">The string template.</param>
 		/// <param name="variables">The collection of the variables within the template.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="encoding"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="template"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="variables"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="encoding" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="template" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="variables" /> is <c>null</c>.</exception>
 		public static StringTemplate<String> Initialize(Encoding encoding, String template, IReadOnlyList<String> variables)
 		{
 			// Check argument
@@ -54,14 +54,14 @@ namespace System
 		}
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="StringTemplate{T}"/> class.
+		/// Initializes a new instance of <see cref="StringTemplate{T}" /> class.
 		/// </summary>
-		/// <param name="encoding">The <see cref="Encoding"/> which is used for the template instantiation.</param>
+		/// <param name="encoding">The <see cref="Encoding" /> which is used for the template instantiation.</param>
 		/// <param name="template">The string template.</param>
 		/// <param name="variablesKeys">The collection of the variables within the template.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="encoding"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="template"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="variablesKeys"/> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="encoding" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="template" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="variablesKeys" /> is <c>null</c>.</exception>
 		public static StringTemplate<T> Initialize<T>(Encoding encoding, String template, IReadOnlyDictionary<String, T> variablesKeys)
 		{
 			// Check argument
@@ -80,15 +80,15 @@ namespace System
 		}
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="StringTemplate{T}"/> class.
+		/// Initializes a new instance of <see cref="StringTemplate{T}" /> class.
 		/// </summary>
-		/// <param name="encoding">The <see cref="Encoding"/> which is used for the template instantiation.</param>
+		/// <param name="encoding">The <see cref="Encoding" /> which is used for the template instantiation.</param>
 		/// <param name="template">The string template.</param>
-		/// <param name="variablesPattern">The <see cref="Regex"/> pattern of the variables.</param>
-		/// <exception cref="ArgumentNullException"><paramref name="encoding"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="template"/> is <c>null</c>.</exception>
-		/// <exception cref="ArgumentException"><paramref name="template"/> is empty.</exception>
-		/// <exception cref="ArgumentNullException"><paramref name="variablesPattern"/> is <c>null</c>.</exception>
+		/// <param name="variablesPattern">The <see cref="Regex" /> pattern of the variables.</param>
+		/// <exception cref="ArgumentNullException"><paramref name="encoding" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="template" /> is <c>null</c>.</exception>
+		/// <exception cref="ArgumentException"><paramref name="template" /> is empty.</exception>
+		/// <exception cref="ArgumentNullException"><paramref name="variablesPattern" /> is <c>null</c>.</exception>
 		public static StringTemplate<String> Initialize(Encoding encoding, String template, String variablesPattern)
 		{
 			// Check argument
@@ -127,7 +127,7 @@ namespace System
 		#region Nested Types
 
 		/// <summary>
-		/// Represents the method that tries to get <paramref name="value"/> of the variable by <paramref name="key"/>.
+		/// Represents the method that tries to get <paramref name="value" /> of the variable by <paramref name="key" />.
 		/// </summary>
 		/// <param name="key">The key of the variable.</param>
 		/// <param name="value">A value of the variable if operation was successful, <c>null</c> otherwise.</param>
@@ -142,7 +142,7 @@ namespace System
 			#region Constructors
 
 			/// <summary>
-			/// Initializes a new instance of the <see cref="VariableInfo"/> structure.
+			/// Initializes a new instance of the <see cref="VariableInfo" /> structure.
 			/// </summary>
 			/// <param name="key">The key of the variable.</param>
 			/// <param name="index">The index of the variable.</param>
@@ -207,7 +207,7 @@ namespace System
 			#region Constructors
 
 			/// <summary>
-			/// Initializes a new instance of <see cref="Segment"/> structure.
+			/// Initializes a new instance of <see cref="Segment" /> structure.
 			/// </summary>
 			/// <param name="index">The index of the argument if segment is variable.</param>
 			/// <param name="data">The data of the argument if segment is constant.</param>
@@ -280,9 +280,9 @@ namespace System
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="StringTemplate{T}"/> class.
+		/// Initializes a new instance of <see cref="StringTemplate{T}" /> class.
 		/// </summary>
-		/// <param name="encoding">The <see cref="Encoding"/> which is used for the template instantiation.</param>
+		/// <param name="encoding">The <see cref="Encoding" /> which is used for the template instantiation.</param>
 		/// <param name="template">The string template.</param>
 		/// <param name="expectedVariablesKeys">The collection of the expected variables within the template.</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -320,7 +320,7 @@ namespace System
 		#region Properties
 
 		/// <summary>
-		/// Gets the <see cref="Encoding"/> which is used for the template instantiation.
+		/// Gets the <see cref="Encoding" /> which is used for the template instantiation.
 		/// </summary>
 		public Encoding Encoding
 		{
@@ -461,7 +461,7 @@ namespace System
 		#region Methods
 
 		/// <summary>
-		/// Instantiates the template using collection of <paramref name="arguments"/> specified.
+		/// Instantiates the template using collection of <paramref name="arguments" /> specified.
 		/// </summary>
 		/// <param name="arguments">The collection of the arguments to use for template instantiation.</param>
 		/// <returns>An instance of the template.</returns>
@@ -472,7 +472,7 @@ namespace System
 		}
 
 		/// <summary>
-		/// Instantiates the template using the collection of <paramref name="arguments"/>.
+		/// Instantiates the template using the collection of <paramref name="arguments" />.
 		/// </summary>
 		/// <param name="arguments">The collection of the arguments to use for template instantiation.</param>
 		/// <returns>An instance of the template.</returns>
@@ -496,7 +496,7 @@ namespace System
 		}
 
 		/// <summary>
-		/// Instantiates the template using <paramref name="tryGetValue"/> method.
+		/// Instantiates the template using <paramref name="tryGetValue" /> method.
 		/// </summary>
 		/// <param name="tryGetValue">A delegate to the method which tries to get value of the argument by name.</param>
 		/// <returns>An instance of the template.</returns>
@@ -532,7 +532,7 @@ namespace System
 		}
 
 		/// <summary>
-		/// Instantiates the template using the collection of <paramref name="arguments"/>.
+		/// Instantiates the template using the collection of <paramref name="arguments" />.
 		/// </summary>
 		/// <param name="stream">The output stream for the instance of the template.</param>
 		/// <param name="arguments">An array of the encoded arguments to use for template instantiation.</param>
@@ -543,7 +543,7 @@ namespace System
 		}
 
 		/// <summary>
-		/// Instantiates the template using the collection of <paramref name="arguments"/>.
+		/// Instantiates the template using the collection of <paramref name="arguments" />.
 		/// </summary>
 		/// <param name="stream">The output stream for the instance of the template.</param>
 		/// <param name="arguments">An array of the encoded arguments to use for template instantiation.</param>
@@ -578,7 +578,7 @@ namespace System
 		}
 
 		/// <summary>
-		/// Instantiates the template using <paramref name="tryGetValue"/> method.
+		/// Instantiates the template using <paramref name="tryGetValue" /> method.
 		/// </summary>
 		/// <param name="stream">An output stream for the instance of the template.</param>
 		/// <param name="tryGetValue">A delegate to the method which tries to get value of the argument by name.</param>
@@ -613,11 +613,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Initiates an asynchronous operation to instantiate the template using specified <paramref name="arguments"/>.
+		/// Initiates an asynchronous operation to instantiate the template using specified <paramref name="arguments" />.
 		/// </summary>
 		/// <param name="stream">An output stream for the instance of the template.</param>
 		/// <param name="arguments">An array of encoded arguments to use for template instantiation.</param>
-		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Task InstantiateAsync(Stream stream, params String[] arguments)
 		{
@@ -625,11 +625,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Initiates an asynchronous operation to instantiate the template using specified <paramref name="arguments"/>.
+		/// Initiates an asynchronous operation to instantiate the template using specified <paramref name="arguments" />.
 		/// </summary>
 		/// <param name="stream">An output stream for the instance of the template.</param>
 		/// <param name="arguments">An array of encoded arguments to use for template instantiation.</param>
-		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public async Task InstantiateAsync(Stream stream, IReadOnlyList<String> arguments)
 		{
@@ -661,11 +661,11 @@ namespace System
 		}
 
 		/// <summary>
-		/// Initiates an asynchronous operation to instantiate the template using <paramref name="tryGetValue"/> method.
+		/// Initiates an asynchronous operation to instantiate the template using <paramref name="tryGetValue" /> method.
 		/// </summary>
 		/// <param name="stream">An output stream for the instance of the template.</param>
 		/// <param name="tryGetValue">A delegate to the method which tries to get value of the argument by name.</param>
-		/// <returns>A <see cref="Task"/> object that represents the asynchronous operation.</returns>
+		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public async Task InstantiateAsync(Stream stream, TryGetValue tryGetValue)
 		{

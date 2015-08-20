@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System.Linq
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="EnumerableEx"/> class.
+	/// Provides a set of tests for <see cref="EnumerableEx" /> class.
 	/// </summary>
 	[TestClass]
 	// ReSharper disable once InconsistentNaming
@@ -24,7 +24,7 @@ namespace System.Linq
 		#region Constructor
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="Enumerable"/> class.
+		/// Initializes a new instance of <see cref="Enumerable" /> class.
 		/// </summary>
 		static EnumerableExTests()
 		{

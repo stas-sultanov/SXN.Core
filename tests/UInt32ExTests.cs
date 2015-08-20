@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="UInt32Ex"/> class.
+	/// Provides a set of tests for <see cref="UInt32Ex" /> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]
@@ -21,7 +21,7 @@ namespace System
 		};
 
 		/// <summary>
-		/// Tests the <see cref="UInt32Ex.GetHighestSetBitIndex"/> method.
+		/// Tests the <see cref="UInt32Ex.GetHighestSetBitIndex" /> method.
 		/// </summary>
 		[TestMethod]
 		[TestCategory("UnitTests")]
@@ -49,7 +49,7 @@ namespace System
 		};
 
 		/// <summary>
-		/// Tests the <see cref="UInt32Ex.IsPowerOfTwo"/> method.
+		/// Tests the <see cref="UInt32Ex.IsPowerOfTwo" /> method.
 		/// </summary>
 		[TestMethod]
 		[TestCategory("UnitTests")]
@@ -82,7 +82,7 @@ namespace System
 		};
 
 		/// <summary>
-		/// Tests the <see cref="UInt32Ex.GetSetBitsCount"/> method.
+		/// Tests the <see cref="UInt32Ex.GetSetBitsCount" /> method.
 		/// </summary>
 		[TestMethod]
 		[TestCategory("UnitTests")]
@@ -115,7 +115,7 @@ namespace System
 		};
 
 		/// <summary>
-		/// Tests the <see cref="UInt32Ex.Align"/> method.
+		/// Tests the <see cref="UInt32Ex.Align" /> method.
 		/// </summary>
 		[TestMethod]
 		[TestCategory("UnitTests")]

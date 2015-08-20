@@ -1,7 +1,7 @@
 ﻿namespace System.Collections.Generic
 {
 	/// <summary>
-	/// Provides equality comparison of two <see cref="KeyValuePair{TKey,TValue}"/> objects.
+	/// Provides equality comparison of two <see cref="KeyValuePair{TKey,TValue}" /> objects.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the key.</typeparam>
 	/// <typeparam name="TValue">The type of the value.</typeparam>
@@ -24,10 +24,10 @@
 		#region Constructors
 
 		/// <summary>
-		/// Initialize a new instance of <see cref="KeyValuePairEqualityComparer{TKey, TValue}"/> class.
+		/// Initialize a new instance of <see cref="KeyValuePairEqualityComparer{TKey, TValue}" /> class.
 		/// </summary>
-		/// <param name="keyComparer">An <see cref="IEqualityComparer{TKey}"/> to use to compare keys.</param>
-		/// <param name="valueComparer">An <see cref="IEqualityComparer{TValue}"/> to use to compare values.</param>
+		/// <param name="keyComparer">An <see cref="IEqualityComparer{TKey}" /> to use to compare keys.</param>
+		/// <param name="valueComparer">An <see cref="IEqualityComparer{TValue}" /> to use to compare values.</param>
 		public KeyValuePairEqualityComparer(IEqualityComparer<TKey> keyComparer, IEqualityComparer<TValue> valueComparer)
 		{
 			if (keyComparer == null)
@@ -63,7 +63,7 @@
 		/// <summary>
 		/// Returns a hash code for the specified object.
 		/// </summary>
-		/// <param name="obj">The <see cref="object"/> for which a hash code is to be returned.</param>
+		/// <param name="obj">The <see cref="object" /> for which a hash code is to be returned.</param>
 		/// <returns>A hash code for the specified object.</returns>
 		public Int32 GetHashCode(KeyValuePair<TKey, TValue> obj)
 		{

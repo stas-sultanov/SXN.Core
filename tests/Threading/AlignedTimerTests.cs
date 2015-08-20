@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace System.Threading
 {
 	/// <summary>
-	/// Provides a set of tests for <see cref="AlignedTimer"/> class.
+	/// Provides a set of tests for <see cref="AlignedTimer" /> class.
 	/// </summary>
 	[TestClass]
 	[ExcludeFromCodeCoverage]

@@ -8,24 +8,24 @@ using System.Runtime.CompilerServices;
 namespace System
 {
 	/// <summary>
-	/// Provides conversion of <see cref="Value128"/> type to other types.
+	/// Provides conversion of <see cref="Value128" /> type to other types.
 	/// </summary>
 	public sealed class Value128Converter : TypeConverter
 	{
 		#region Constant and Static Fields
 
 		/// <summary>
-		/// Number of symbols in Base16 representation of <see cref="Value128"/>.
+		/// Number of symbols in Base16 representation of <see cref="Value128" />.
 		/// </summary>
 		private const UInt32 base16EncodedSymbolsCount = 32;
 
 		/// <summary>
-		/// Number of symbols in Base32 representation of <see cref="Value128"/>.
+		/// Number of symbols in Base32 representation of <see cref="Value128" />.
 		/// </summary>
 		private const UInt32 base32EncodedSymbolsCount = 26;
 
 		/// <summary>
-		/// Number of symbols in Base64 representation of <see cref="Value128"/>.
+		/// Number of symbols in Base64 representation of <see cref="Value128" />.
 		/// </summary>
 		private const UInt32 base64EncodedSymbolsCount = 22;
 
@@ -48,7 +48,7 @@ namespace System
 		#region Properties
 
 		/// <summary>
-		/// Gets the list of types to/from which <see cref="Value128"/> can be converted.
+		/// Gets the list of types to/from which <see cref="Value128" /> can be converted.
 		/// </summary>
 		public static IReadOnlyList<Type> SupportedTypes
 		{
@@ -68,8 +68,8 @@ namespace System
 		/// <summary>
 		/// Returns whether this converter can convert an object of the given type to the type of this converter, using the specified context.
 		/// </summary>
-		/// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that provides a format context. </param>
-		/// <param name="sourceType">A <see cref="T:System.Type"/> that represents the type you want to convert from. </param>
+		/// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> that provides a format context. </param>
+		/// <param name="sourceType">A <see cref="T:System.Type" /> that represents the type you want to convert from. </param>
 		/// <returns><c>true</c> if this converter can perform the conversion; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override Boolean CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -83,8 +83,8 @@ namespace System
 		/// <returns>
 		/// true if this converter can perform the conversion; otherwise, false.
 		/// </returns>
-		/// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that provides a format context. </param>
-		/// <param name="destinationType">A <see cref="T:System.Type"/> that represents the type you want to convert to. </param>
+		/// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> that provides a format context. </param>
+		/// <param name="destinationType">A <see cref="T:System.Type" /> that represents the type you want to convert to. </param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override Boolean CanConvertTo(ITypeDescriptorContext context, Type destinationType)
 		{
@@ -94,11 +94,11 @@ namespace System
 		/// <summary>
 		/// Converts the given object to the type of this converter, using the specified context and culture information.
 		/// </summary>
-		/// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that provides a format context. </param>
-		/// <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> to use as the current culture. </param>
-		/// <param name="value">The <see cref="T:System.Object"/> to convert. </param>
+		/// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> that provides a format context. </param>
+		/// <param name="culture">The <see cref="T:System.Globalization.CultureInfo" /> to use as the current culture. </param>
+		/// <param name="value">The <see cref="T:System.Object" /> to convert. </param>
 		/// <exception cref="T:System.NotSupportedException">The conversion cannot be performed. </exception>
-		/// <returns> An <see cref="T:System.Object"/> that represents the converted value.</returns>
+		/// <returns> An <see cref="T:System.Object" /> that represents the converted value.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override Object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
 		{
@@ -143,12 +143,12 @@ namespace System
 		/// <summary>
 		/// Converts the given value object to the specified type, using the specified context and culture information.
 		/// </summary>
-		/// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that provides a format context. </param>
-		/// <param name="culture">A <see cref="T:System.Globalization.CultureInfo"/>. If null is passed, the current culture is assumed. </param>
-		/// <param name="value">The <see cref="T:System.Object"/> to convert. </param>
-		/// <param name="destinationType">The <see cref="T:System.Type"/> to convert the <paramref name="value"/> parameter to. </param>
-		/// <returns>An <see cref="T:System.Object"/> that represents the converted value. </returns>
-		/// <exception cref="T:System.ArgumentNullException">The <paramref name="destinationType"/> parameter is null. </exception>
+		/// <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> that provides a format context. </param>
+		/// <param name="culture">A <see cref="T:System.Globalization.CultureInfo" />. If null is passed, the current culture is assumed. </param>
+		/// <param name="value">The <see cref="T:System.Object" /> to convert. </param>
+		/// <param name="destinationType">The <see cref="T:System.Type" /> to convert the <paramref name="value" /> parameter to. </param>
+		/// <returns>An <see cref="T:System.Object" /> that represents the converted value. </returns>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="destinationType" /> parameter is null. </exception>
 		/// <exception cref="T:System.NotSupportedException">The conversion cannot be performed. </exception>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override Object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, Object value, Type destinationType)
@@ -214,10 +214,10 @@ namespace System
 		#region Methods
 
 		/// <summary>
-		/// Converts an instance of <see cref="Guid"/> structure to the instance of <see cref="Value128"/> structure.
+		/// Converts an instance of <see cref="Guid" /> structure to the instance of <see cref="Value128" /> structure.
 		/// </summary>
-		/// <param name="value">An instance of <see cref="Guid"/> to convert.</param>
-		/// <returns>An <see cref="Value128"/> instance.</returns>
+		/// <param name="value">An instance of <see cref="Guid" /> to convert.</param>
+		/// <returns>An <see cref="Value128" /> instance.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Value128 FromGuid(Guid value)
 		{
@@ -231,10 +231,10 @@ namespace System
 		}
 
 		/// <summary>
-		/// Converts an instance of <see cref="Value128"/> structure to the <see cref="Array"/> of <see cref="Byte"/>.
+		/// Converts an instance of <see cref="Value128" /> structure to the <see cref="Array" /> of <see cref="Byte" />.
 		/// </summary>
-		/// <param name="value">The instance of <see cref="Value128"/> to convert.</param>
-		/// <returns>The <see cref="Array"/> instance.</returns>
+		/// <param name="value">The instance of <see cref="Value128" /> to convert.</param>
+		/// <returns>The <see cref="Array" /> instance.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Byte[] ToByteArray(Value128 value)
 		{
@@ -248,10 +248,10 @@ namespace System
 		}
 
 		/// <summary>
-		/// Converts an instance of <see cref="Value128"/> structure to the instance of <see cref="Guid"/> structure.
+		/// Converts an instance of <see cref="Value128" /> structure to the instance of <see cref="Guid" /> structure.
 		/// </summary>
-		/// <param name="value">An instance of <see cref="Value128"/> to convert.</param>
-		/// <returns>An <see cref="Guid"/> instance.</returns>
+		/// <param name="value">An instance of <see cref="Value128" /> to convert.</param>
+		/// <returns>An <see cref="Guid" /> instance.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Guid ToGuid(Value128 value)
 		{
@@ -266,10 +266,10 @@ namespace System
 		}
 
 		/// <summary>
-		/// Converts an instance of <see cref="Value128"/> structure to the instance of <see cref="IPAddress"/> class.
+		/// Converts an instance of <see cref="Value128" /> structure to the instance of <see cref="IPAddress" /> class.
 		/// </summary>
-		/// <param name="value">An instance of <see cref="Value128"/> to convert.</param>
-		/// <returns>An <see cref="IPAddress"/> instance.</returns>
+		/// <param name="value">An instance of <see cref="Value128" /> to convert.</param>
+		/// <returns>An <see cref="IPAddress" /> instance.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IPAddress ToIPAddress(Value128 value)
 		{
@@ -281,15 +281,15 @@ namespace System
 		}
 
 		/// <summary>
-		/// Tries to convert the specified string, which encodes <see cref="Value128"/> data with <paramref name="base32Encoding"/>, to an equivalent <see cref="Value128"/> structure.
+		/// Tries to convert the specified string, which encodes <see cref="Value128" /> data with <paramref name="base32Encoding" />, to an equivalent <see cref="Value128" /> structure.
 		/// </summary>
-		/// <param name="data">The string to convert. Must be at least <see cref="base32EncodedSymbolsCount"/> chars long.</param>
-		/// <param name="offset">An offset in <paramref name="data"/>.</param>
+		/// <param name="data">The string to convert. Must be at least <see cref="base32EncodedSymbolsCount" /> chars long.</param>
+		/// <param name="offset">An offset in <paramref name="data" />.</param>
 		/// <param name="base32Encoding">The base-32 encoding.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result"/> contains valid <see cref="Value128"/> if operation was successful, <see cref="Value128.Zero"/> otherwise.
+		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result" /> contains valid <see cref="Value128" /> if operation was successful, <see cref="Value128.Zero" /> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static TryResult<Value128> TryFromBase32String(String data, Int32 offset, Base32Encoding base32Encoding)
@@ -352,15 +352,15 @@ namespace System
 		}
 
 		/// <summary>
-		/// Tries to convert the specified string, which encodes <see cref="Value128"/> data with <paramref name="base64Encoding"/>, to an equivalent <see cref="Value128"/> structure.
+		/// Tries to convert the specified string, which encodes <see cref="Value128" /> data with <paramref name="base64Encoding" />, to an equivalent <see cref="Value128" /> structure.
 		/// </summary>
-		/// <param name="data">The string to convert. Must be at least <see cref="base64EncodedSymbolsCount"/> chars long.</param>
-		/// <param name="offset">An offset in <paramref name="data"/>.</param>
+		/// <param name="data">The string to convert. Must be at least <see cref="base64EncodedSymbolsCount" /> chars long.</param>
+		/// <param name="offset">An offset in <paramref name="data" />.</param>
 		/// <param name="base64Encoding">The base-64 encoding.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result"/> contains valid <see cref="Value128"/> if operation was successful, <see cref="Value128.Zero"/> otherwise.
+		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result" /> contains valid <see cref="Value128" /> if operation was successful, <see cref="Value128.Zero" /> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static TryResult<Value128> TryFromBase64String(String data, Int32 offset, Base64Encoding base64Encoding)
@@ -423,14 +423,14 @@ namespace System
 		}
 
 		/// <summary>
-		/// Tries to convert a byte array representation of a <see cref="Value128"/> to the equivalent structure.
+		/// Tries to convert a byte array representation of a <see cref="Value128" /> to the equivalent structure.
 		/// </summary>
-		/// <param name="data">The instance of <see cref="Array"/> to convert.</param>
-		/// <param name="offset">An offset in <paramref name="data"/>.</param>
+		/// <param name="data">The instance of <see cref="Array" /> to convert.</param>
+		/// <param name="offset">An offset in <paramref name="data" />.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result"/> contains valid <see cref="Value128"/> if operation was successful, <see cref="Value128.Zero"/> otherwise.
+		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result" /> contains valid <see cref="Value128" /> if operation was successful, <see cref="Value128.Zero" /> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static TryResult<Value128> TryFromByteArray(Byte[] data, Int32 offset)
@@ -453,13 +453,13 @@ namespace System
 		}
 
 		/// <summary>
-		/// Tries to convert an instance of <see cref="IPAddress"/> to the equivalent instance of <see cref="Value128"/> structure.
+		/// Tries to convert an instance of <see cref="IPAddress" /> to the equivalent instance of <see cref="Value128" /> structure.
 		/// </summary>
-		/// <param name="value">An instance of <see cref="IPAddress"/> to convert.</param>
+		/// <param name="value">An instance of <see cref="IPAddress" /> to convert.</param>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result"/> contains valid <see cref="Value128"/> if operation was successful, <see cref="Value128.Zero"/> otherwise.
+		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result" /> contains valid <see cref="Value128" /> if operation was successful, <see cref="Value128.Zero" /> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static TryResult<Value128> TryFromIPAddress(IPAddress value)
@@ -478,15 +478,15 @@ namespace System
 		}
 
 		/// <summary>
-		/// Tries to convert an instance of <see cref="Value128"/> structure to to its equivalent string representation that is encoded with <paramref name="base32Encoding"/>.
+		/// Tries to convert an instance of <see cref="Value128" /> structure to to its equivalent string representation that is encoded with <paramref name="base32Encoding" />.
 		/// </summary>
 		/// <param name="data">The 128 bit value to convert.</param>
 		/// <param name="base32Encoding">The base-32 encoding.</param>
-		/// <returns>The string representation, of the <paramref name="data"/>.</returns>
+		/// <returns>The string representation, of the <paramref name="data" />.</returns>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result"/> contains the string representation of the <paramref name="data"/> if operation was successful, <c>null</c> otherwise.
+		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result" /> contains the string representation of the <paramref name="data" /> if operation was successful, <c>null</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static TryResult<String> TryToBase32String(Value128 data, Base32Encoding base32Encoding)
@@ -535,15 +535,15 @@ namespace System
 		}
 
 		/// <summary>
-		/// Tries to convert an instance of <see cref="Value128"/> structure to to its equivalent string representation that is encoded with <paramref name="base64Encoding"/>.
+		/// Tries to convert an instance of <see cref="Value128" /> structure to to its equivalent string representation that is encoded with <paramref name="base64Encoding" />.
 		/// </summary>
 		/// <param name="data">The 128 bit value to convert.</param>
 		/// <param name="base64Encoding">The base-64 encoding.</param>
-		/// <returns>The string representation, of the <paramref name="data"/>.</returns>
+		/// <returns>The string representation, of the <paramref name="data" />.</returns>
 		/// <returns>
-		/// An instance of <see cref="TryResult{T}"/> which encapsulates result of the operation.
-		/// <see cref="TryResult{T}.Success"/> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
-		/// <see cref="TryResult{T}.Result"/> contains the string representation of the <paramref name="data"/> if operation was successful, <c>null</c> otherwise.
+		/// An instance of <see cref="TryResult{T}" /> which encapsulates result of the operation.
+		/// <see cref="TryResult{T}.Success" /> contains <c>true</c> if operation was successful, <c>false</c> otherwise.
+		/// <see cref="TryResult{T}.Result" /> contains the string representation of the <paramref name="data" /> if operation was successful, <c>null</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static TryResult<String> TryToBase64String(Value128 data, Base64Encoding base64Encoding)

@@ -3,19 +3,19 @@
 namespace System
 {
 	/// <summary>
-	/// Provides a set of extension methods for the <see cref="ulong"/> class.
+	/// Provides a set of extension methods for the <see cref="ulong" /> class.
 	/// </summary>
 	public static class UInt32Ex
 	{
 		#region Methods
 
 		/// <summary>
-		/// Aligns <paramref name="value"/> to the <paramref name="powerOfTwoBase"/>.
+		/// Aligns <paramref name="value" /> to the <paramref name="powerOfTwoBase" />.
 		/// </summary>
 		/// <param name="value">The unsigned integer value.</param>
 		/// <param name="powerOfTwoBase">The power of two align base.</param>
 		/// <returns>Aligned value.</returns>
-		/// <exception cref="ArgumentOutOfRangeException"><paramref name="powerOfTwoBase"/> is not power of two.</exception>
+		/// <exception cref="ArgumentOutOfRangeException"><paramref name="powerOfTwoBase" /> is not power of two.</exception>
 		public static UInt32 Align(this UInt32 value, UInt32 powerOfTwoBase)
 		{
 			if (!powerOfTwoBase.IsPowerOfTwo())
@@ -108,10 +108,10 @@ namespace System
 		}
 
 		/// <summary>
-		/// Gets a <see cref="Boolean"/> value which indicates whether <paramref name="value"/> is power of 2.
+		/// Gets a <see cref="Boolean" /> value which indicates whether <paramref name="value" /> is power of 2.
 		/// </summary>
 		/// <param name="value">The unsigned integer value.</param>
-		/// <returns><c>true</c> if <paramref name="value"/> is power of 2, <c>false</c> otherwise.</returns>
+		/// <returns><c>true</c> if <paramref name="value" /> is power of 2, <c>false</c> otherwise.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Boolean IsPowerOfTwo(this UInt32 value)
 		{

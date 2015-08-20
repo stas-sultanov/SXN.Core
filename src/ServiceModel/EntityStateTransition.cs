@@ -24,7 +24,7 @@ namespace System.ServiceModel
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of <see cref="EntityStateTransition"/> structure.
+		/// Initializes a new instance of <see cref="EntityStateTransition" /> structure.
 		/// </summary>
 		/// <param name="initialState">An initial state of the entity.</param>
 		/// <param name="targetState">A target state of the entity.</param>
@@ -58,7 +58,7 @@ namespace System.ServiceModel
 		/// Returns a value that indicates whether this instance is equal to a specified object.
 		/// </summary>
 		/// <param name="obj">The object to compare with this instance.</param>
-		/// <returns><c>true</c> if <paramref name="obj"/> is a <see cref="EntityStateTransition"/> that has the same value as this instance; otherwise, <c>false</c>.</returns>
+		/// <returns><c>true</c> if <paramref name="obj" /> is a <see cref="EntityStateTransition" /> that has the same value as this instance; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public override Boolean Equals(Object obj)
 		{
@@ -84,10 +84,10 @@ namespace System.ServiceModel
 		#region Methods of IEquatable<EntityStateTransition>
 
 		/// <summary>
-		/// Returns a value indicating whether this instance and a specified <see cref="EntityStateTransition"/> represent the same value.
+		/// Returns a value indicating whether this instance and a specified <see cref="EntityStateTransition" /> represent the same value.
 		/// </summary>
 		/// <param name="other">An object to compare to this instance.</param>
-		/// <returns><c>true</c> if <paramref name="other"/> is equal to this instance; otherwise, <c>false</c>.</returns>
+		/// <returns><c>true</c> if <paramref name="other" /> is equal to this instance; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Boolean Equals(EntityStateTransition other)
 		{
@@ -96,14 +96,14 @@ namespace System.ServiceModel
 
 		#endregion
 
-		#region Operators
+		#region Methods
 
 		/// <summary>
-		/// Indicates whether the values of two specified <see cref="EntityStateTransition"/> objects are equal.
+		/// Indicates whether the values of two specified <see cref="EntityStateTransition" /> objects are equal.
 		/// </summary>
 		/// <param name="first">The first object to compare.</param>
 		/// <param name="second">The second object to compare.</param>
-		/// <returns><c>true</c> if <paramref name="first"/> and <paramref name="second"/> are equal; otherwise, <c>false</c>.</returns>
+		/// <returns><c>true</c> if <paramref name="first" /> and <paramref name="second" /> are equal; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Boolean operator ==(EntityStateTransition first, EntityStateTransition second)
 		{
@@ -111,11 +111,11 @@ namespace System.ServiceModel
 		}
 
 		/// <summary>
-		/// Indicates whether the values of two specified <see cref="EntityStateTransition"/> objects are not equal.
+		/// Indicates whether the values of two specified <see cref="EntityStateTransition" /> objects are not equal.
 		/// </summary>
 		/// <param name="first">The first object to compare.</param>
 		/// <param name="second">The second object to compare.</param>
-		/// <returns><c>true</c> if <paramref name="first"/> and <paramref name="second"/> are not equal; otherwise, <c>false</c>.</returns>
+		/// <returns><c>true</c> if <paramref name="first" /> and <paramref name="second" /> are not equal; otherwise, <c>false</c>.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Boolean operator !=(EntityStateTransition first, EntityStateTransition second)
 		{

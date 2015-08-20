@@ -10,7 +10,7 @@ namespace System
 		#region Constructors
 
 		/// <summary>
-		/// Initialize a new instance of <see cref="DisposableBase"/> class.
+		/// Initialize a new instance of <see cref="DisposableBase" /> class.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		protected DisposableBase()
@@ -23,7 +23,7 @@ namespace System
 		#region Properties
 
 		/// <summary>
-		/// Gets a <see cref="Boolean"/> value which indicates whether instance is disposed.
+		/// Gets a <see cref="Boolean" /> value which indicates whether instance is disposed.
 		/// </summary>
 		public Boolean IsDisposed
 		{
@@ -56,7 +56,7 @@ namespace System
 		/// <summary>
 		/// Releases resources associated with the instance.
 		/// </summary>
-		/// <param name="fromDispose">Value indicating whether method was called from the <see cref="Dispose()"/> method.</param>
+		/// <param name="fromDispose">Value indicating whether method was called from the <see cref="Dispose()" /> method.</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private void Dispose(Boolean fromDispose)
 		{
