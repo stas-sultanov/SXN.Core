@@ -98,7 +98,7 @@ namespace System.ServiceModel
 			// Set workflow
 			stateWorkflow = workflowExtension == null ? workerWorkflow : workerWorkflow.Concat(workflowExtension);
 
-			// Signup on stat changing event
+			// Sign-up on stat changing event
 			StateChanged += OnStateChanged;
 
 			// Set state to creating
@@ -274,13 +274,6 @@ namespace System.ServiceModel
 			// Set solid state
 			State = EntityState.Inactive;
 		}
-
-		/// <summary>
-		/// Initiates an asynchronous operation to perform work.
-		/// </summary>
-		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
-		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
-		public abstract Task RunAsync(CancellationToken cancellationToken);
 
 		#endregion
 

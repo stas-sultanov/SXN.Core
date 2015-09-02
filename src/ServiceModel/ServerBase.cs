@@ -148,7 +148,7 @@ namespace System.ServiceModel
 		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
 		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public override async Task RunAsync(CancellationToken cancellationToken)
+		public async Task RunAsync(CancellationToken cancellationToken)
 		{
 			// Trace diagnostics event
 			TraceEvent(EventLevel.Informational, @"Main cycle started.");
@@ -168,7 +168,7 @@ namespace System.ServiceModel
 				// Get handler
 				var handler = awaitResult.Result;
 
-				// Start a new task
+				// Start new task
 				var task = awaitResult.Result.TryProcessAsync();
 
 				// Add task to the collection of active tasks
@@ -272,7 +272,7 @@ namespace System.ServiceModel
 		/// Initiates an asynchronous operation to try await the request.
 		/// </summary>
 		/// <returns>
-		/// A <see cref="Task{TResult}" /> object of type <see cref="IServerRequestHandler" /> that represents the asynchronous operation.
+		/// A <see cref="Task{TResult}" /> object of type <see cref="TryResult{T}" /> that represents the asynchronous operation.
 		/// <see cref="Task{TResult}.Result" /> refers to the instance of <see cref="IServerRequestHandler" /> if operation was successful, <c>null</c> otherwise.
 		/// </returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]

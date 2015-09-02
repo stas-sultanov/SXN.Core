@@ -14,7 +14,7 @@ namespace System
 		/// Initializes a new instance of <see cref="TryResult{T}" /> structure.
 		/// </summary>
 		/// <param name="success">A <see cref="Boolean" /> value that indicates whether an operation was successful.</param>
-		/// <param name="result">A valid <typeparamref name="T" /> object if operation was successful.</param>
+		/// <param name="result">A valid <typeparamref name="T" /> object if operation was successful, <c>default(T)</c> otherwise.</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private TryResult(Boolean success, T result)
 		{

@@ -47,13 +47,6 @@ namespace System.ServiceModel
 		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
 		Task DeactivateAsync(CancellationToken cancellationToken);
 
-		/// <summary>
-		/// Initiates an asynchronous operation to perform work.
-		/// </summary>
-		/// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for a task to complete.</param>
-		/// <returns>A <see cref="Task" /> object that represents the asynchronous operation.</returns>
-		Task RunAsync(CancellationToken cancellationToken);
-
 		#endregion
 	}
 }
