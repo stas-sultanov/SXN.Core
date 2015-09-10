@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Collections\Generic\ArneTree.cs" />
     <Compile Include="Collections\Generic\ArneTreeNode.cs" />
+    <Compile Include="Collections\Generic\ArrayEx.cs" />
     <Compile Include="Collections\Generic\NodeBase.cs" />
     <None Include="StateMachine\StateMachineTransition.cs" />
     <None Include="StateMachine\StateMachineState.cs" />

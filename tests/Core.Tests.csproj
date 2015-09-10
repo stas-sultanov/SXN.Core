@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Collections\Generic\ArneTreeLoadTest.cs" />
     <None Include="Collections\Generic\ArneTreeTests.cs" />
+    <Compile Include="Collections\Generic\ArrayEx.cs" />
     <Compile Include="Diagnostics\Tracing\DiagnosticsEventArgsTests.cs" />
     <Compile Include="BaseEncoding\Base32EncodingTests.cs" />
     <Compile Include="BaseEncoding\Base16EncodingTests.cs" />
