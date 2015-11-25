@@ -59,7 +59,7 @@ namespace System
 
 			Math.DivRem(ticks, ticksPerTimeUnit, out remainder);
 
-			return new DateTime(ticks + ticksPerTimeUnit - remainder);
+			return new DateTime(ticks + ticksPerTimeUnit - remainder, value.Kind);
 		}
 
 		/// <summary>
@@ -79,7 +79,7 @@ namespace System
 
 			Math.DivRem(ticks, ticksPerTimeUnit, out remainder);
 
-			return new DateTime(ticks - remainder);
+			return new DateTime(ticks - remainder, value.Kind);
 		}
 
 		/// <summary>
